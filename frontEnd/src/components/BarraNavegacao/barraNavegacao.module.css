@@ -1,0 +1,19 @@
+.btnUm,
+.btnDois,
+.btnTres {
+    color: #0d3b66;
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btnUm:hover,
+.btnDois:hover,
+.btnTres:hover {
+    color: #0d3b66;
+    background-color: #e8f1f8;
+    border: 1px solid rgb(185, 190, 213);
+}
+
