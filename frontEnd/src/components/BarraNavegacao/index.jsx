@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./barraNavegacao.module.css";
 import Link from "next/link";
 
