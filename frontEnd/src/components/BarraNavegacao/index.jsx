@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./barraNavegacao.module.css";
 export default function BarraNavegacao({botaoUm, botaoDois, botaoTres}){
     return(
