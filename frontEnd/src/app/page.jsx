@@ -43,12 +43,9 @@ const servicos = [
 export default function Home() {
   return (
     <>
-    <main style={{backgroundColor: "#eff2f4"}}>
+    <main style={{backgroundColor: "#F8FAFC"}}>
 
-
-    <header>
-      <BarraNavegacao botaoUm="Cadastre-se" botaoDois="Cadastre-se como profissional" botaoTres="Entrar"></BarraNavegacao>
-    </header>
+    <BarraNavegacao botaoUm="Cadastre-se" botaoDois="Cadastre-se como profissional" botaoTres="Entrar"></BarraNavegacao>
 
     {/* banner */}
     <div className="container-fluid" 
