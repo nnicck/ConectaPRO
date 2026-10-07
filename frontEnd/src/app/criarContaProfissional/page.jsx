@@ -1,148 +1,139 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import EtapasContaProfissonal from "@/components/EtapasContaProfissional";
 
 export default function CadastroProfissional() {
+  const inputStyle = {
+    height: "48px",
+    borderRadius: "6px",
+    border: "1px solid #c9d7e6",
+    fontSize: "16px",
+    backgroundColor: "#fff",
+  };
+
+  const etapaAtiva = {
+    width: "70px",
+    height: "70px",
+    backgroundColor: "#2864e8",
+  };
+
+  const etapaInativa = {
+    width: "70px",
+    height: "70px",
+    backgroundColor: "#dedede",
+  };
+
   return (
-    <div className="min-vh-100 bg-dark py-4">
-      <div className="container">
-        <div className="text-secondary small mb-2">
-          Qual conta criar? (Profissional)
+    <div
+      className="min-vh-100"
+      style={{
+        backgroundColor: "#f6f8fa",
+        paddingTop: "40px",
+        paddingBottom: "40px",
+      }}
+    >
+      <div className="container-fluid px-4 px-md-5 mt-5">
+
+        {/* VOLTAR */}
+        <div className="mb-4">
+          <button
+            type="button"
+            className="btn p-0 border-0 shadow-none"
+            style={{
+              fontSize: "42px",
+              lineHeight: "1",
+              color: "#000",
+            }}
+          >
+            ←
+          </button>
         </div>
 
-        <div className="bg-light min-vh-100">
-          {/* Cabeçalho */}
-          <div className="p-4">
-            <button
-              type="button"
-              className="btn btn-link text-dark text-decoration-none fs-1 p-0 lh-1"
-            >
-              ←
-            </button>
-          </div>
+        <EtapasContaProfissonal></EtapasContaProfissonal>
 
-          {/* Etapas */}
-          <div className="container px-5">
-            <div className="row align-items-center justify-content-between mb-4">
-              <div className="col-6 col-md-3 d-flex align-items-center gap-2 mb-3 mb-md-0">
-                <div
-                  className="rounded-circle bg-secondary flex-shrink-0"
-                  style={{ width: "30px", height: "30px" }}
-                ></div>
-                <span className="small">Dados Pessoais</span>
-              </div>
+        {/* CONTEÚDO */}
+        <div className="container px-4 px-md-5 mt-5">
 
-              <div className="col-6 col-md-3 d-flex align-items-center gap-2 mb-3 mb-md-0">
-                <div
-                  className="rounded-circle bg-secondary-subtle flex-shrink-0"
-                  style={{ width: "30px", height: "30px" }}
-                ></div>
-                <span className="small">Serviços</span>
-              </div>
 
-              <div className="col-6 col-md-3 d-flex align-items-center gap-2">
-                <div
-                  className="rounded-circle bg-secondary-subtle flex-shrink-0"
-                  style={{ width: "30px", height: "30px" }}
-                ></div>
-                <span className="small">Endereço</span>
-              </div>
+          <div className="row g-4">
 
-              <div className="col-6 col-md-3 d-flex align-items-center gap-2">
-                <div
-                  className="rounded-circle bg-secondary-subtle flex-shrink-0"
-                  style={{ width: "30px", height: "30px" }}
-                ></div>
-                <span className="small">Segurança</span>
-              </div>
-            </div>
-
-            {/* Conteúdo */}
-            <h4 className="fw-normal mb-3">Dados Pessoais</h4>
-
-            <div className="row g-4">
-              {/* Foto */}
-              <div className="col-12 col-md-4">
-                <div className="text-center text-md-start">
-                  <label className="form-label small">
-                    Foto de perfil
-                  </label>
-
-                  <div
-                    className="bg-secondary rounded-circle mx-auto mx-md-0"
-                    style={{
-                      width: "88px",
-                      height: "88px",
-                    }}
-                  ></div>
+          <div>
+                <div className="d-flex justify-content-center align-itens-center flex-columns">
+                <img
+                    id="selectedAvatar"
+                    src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                    className="rounded-circle"
+                    style={{ width: 200, height: 200, objectFit: "cover" }}
+                    alt="example placeholder"
+                />
                 </div>
-              </div>
-
-              {/* Formulário */}
-              <div className="col-12 col-md-8">
-                <form>
-                  {/* Nome */}
-                  <div className="mb-3">
-                    <label className="form-label small mb-1">
-                      Nome completo
+                <div className="d-flex justify-content-center">
+                <div data-mdb-ripple-init="" className="btn btn-primary btn-rounded">
+                    <label className="form-label text-white m-1" htmlFor="customFile2">
+                    Choose file
                     </label>
-
                     <input
-                      type="text"
-                      className="form-control border-primary"
+                    type="file"
+                    className="form-control d-none"
+                    id="customFile2"
+                    onchange="displaySelectedImage(event, 'selectedAvatar')"
                     />
-                  </div>
+                </div>
+                </div>
+            </div>
 
-                  {/* Email */}
-                  <div className="mb-3">
-                    <label className="form-label small mb-1">
-                      E-mail
-                    </label>
+            {/* FORMULÁRIO */}
+            <div className="col-12 col-md-8">
 
+            <form>
+                <div className="form-group">
+                    <label htmlFor="formGroupExampleInput">Nome</label>
                     <input
-                      type="email"
-                      className="form-control"
+                    type="text"
+                    className="form-control form-control-lg"
+                    id="formGroupExampleInput"
+                    placeholder="Example input"
                     />
-                  </div>
+                </div>
+         
+                <div className="form-group mt-4">
+                    <label htmlFor="formGroupExampleInput2">E-mail</label>
+                    <input
+                    type="email"
+                    className="form-control form-control-lg"
+                    id="formGroupExampleInput2"
+                    placeholder="Another input"
+                    />
+                </div>
 
-                  {/* Telefone + Data */}
-                  <div className="row g-4">
-                    <div className="col-12 col-md-6">
-                      <label className="form-label small mb-1">
-                        Telefone
-                      </label>
-
-                      <input
-                        type="tel"
-                        className="form-control"
-                      />
+                <div className="d-flex align-items-center justify-content-start gap-5 mt-4">
+                    <div className="form-group">
+                        <label htmlFor="formGroupExampleInput">Telefone</label>
+                        <input
+                        type="phone"
+                        className="form-control form-control-lg"
+                        id="formGroupExampleInput"
+                        placeholder="Example input"
+                        />
                     </div>
-
-                    <div className="col-12 col-md-6">
-                      <label className="form-label small mb-1">
-                        Data de Nascimento
-                      </label>
-
-                      <input
+            
+                    <div className="form-group ">
+                        <label htmlFor="formGroupExampleInput2">Data de Nascimento</label>
+                        <input
                         type="date"
-                        className="form-control"
-                      />
+                        className="form-control form-control-lg"
+                        id="formGroupExampleInput2"
+                        placeholder="Another input"
+                        />
                     </div>
-                  </div>
+                </div>
+                <button className="btn btn-primary w-100 mt-5">Continuar</button>
+              </form>
 
-                  {/* Botão */}
-                  <div className="d-grid mt-5">
-                    <button
-                      type="button"
-                      className="btn btn-secondary py-2"
-                    >
-                      Continuar
-                    </button>
-                  </div>
-                </form>
-              </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
