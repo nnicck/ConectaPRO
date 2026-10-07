@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import EtapasContaProfissonal from "@/components/EtapasContaProfissional";
+import BarraNavegacao from "@/components/BarraNavegacao";
 
 export default function CadastroProfissional() {
   const inputStyle = {
@@ -24,6 +25,11 @@ export default function CadastroProfissional() {
   };
 
   return (
+    <>
+    <header>
+        <BarraNavegacao botaoUm="Cadastre-se" botaoDois="Cadastre-se como profissional" botaoTres="Entrar"></BarraNavegacao>
+    </header>
+    
     <div
       className="min-vh-100"
       style={{
@@ -35,7 +41,7 @@ export default function CadastroProfissional() {
       <div className="container-fluid px-4 px-md-5 mt-5">
 
         {/* VOLTAR */}
-        <div className="mb-4">
+        <div>
           <button
             type="button"
             className="btn p-0 border-0 shadow-none"
@@ -52,13 +58,13 @@ export default function CadastroProfissional() {
         <EtapasContaProfissonal></EtapasContaProfissonal>
 
         {/* CONTEÚDO */}
-        <div className="container px-4 px-md-5 mt-5">
+        <div className="d-flex justify-content-center align-itens-center row mt-5">
 
-
-          <div className="row g-4">
 
           <div>
+                <p className="text-center">Foto de perfil</p>
                 <div className="d-flex justify-content-center align-itens-center flex-columns">
+                
                 <img
                     id="selectedAvatar"
                     src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
@@ -67,7 +73,7 @@ export default function CadastroProfissional() {
                     alt="example placeholder"
                 />
                 </div>
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center mt-2">
                 <div data-mdb-ripple-init="" className="btn btn-primary btn-rounded">
                     <label className="form-label text-white m-1" htmlFor="customFile2">
                     Choose file
@@ -85,7 +91,7 @@ export default function CadastroProfissional() {
             {/* FORMULÁRIO */}
             <div className="col-12 col-md-8">
 
-            <form>
+                <form>
                 <div className="form-group">
                     <label htmlFor="formGroupExampleInput">Nome</label>
                     <input
@@ -134,7 +140,7 @@ export default function CadastroProfissional() {
           </div>
         </div>
 
-      </div>
     </div>
+    </>
   );
 }

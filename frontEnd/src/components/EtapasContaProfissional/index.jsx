@@ -13,7 +13,7 @@ export default function EtapasContaProfissonal({}) {
     return (
         
     <div className="container d-flex align-items-center justify-content-center h-100">
-        <div className="row d-flex align-items-center justify-content-center w-100">
+        <div className="row d-flex align-items-center justify-content-center w-100 ms-5">
             {/* Dados Pessoais */}
             <div className="col-12 col-md-3 d-flex align-items-center gap-3 mb-3 mb-md-0">
                 <div className="rounded-circle flex-shrink-0"style={etapaAtiva}/>
