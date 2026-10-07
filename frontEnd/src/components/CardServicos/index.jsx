@@ -1,22 +1,58 @@
-export default function CardServicos(){
-    return(
-        <>
-        <div className="container py-4 mt-4">
-        <h3 className="text-center fw-bold mb-4">Serviços Disponíveis</h3>
-            <div className="col-12 col-md-6 col-lg-3 " style={{ height: "350px" }}>
-            <div className="card h-100 rounded-2">
-                <div className="card-body">
-                <div className="text-center mb-2">
-                    <img src="/diarista.png" alt="Diarista" width="64" height="64"/>
-                </div>
-                <h5 className="card-title">Diarista</h5>
-                <p className="text-primary small">Limpeza residencial e comercial</p>
-                <p className="small mb-0"> A partir de <span className="text-primary fw-bold ms-1"> R$80,00</span></p>
-                </div>
-            </div>
-            </div>
-        </div>
-        </>
-    )
+export default function CardServicos({
+    imgCardServico,
+    titleCardServico,
+    descCardServico,
+    lugarCardServico,
+    menorDescCardServico,
+    precoCardServico
+}) {
+    return (
+        <div className="card h-100 rounded-2 w-75">
 
+            <div className="card-body d-flex flex-column">
+
+                <div className="text-center mb-2">
+                    <img
+                        src={imgCardServico}
+                        alt={titleCardServico}
+                        width="64"
+                        height="64"
+                    />
+                </div>
+
+                <h5 className="card-title">
+                    {titleCardServico}
+                </h5>
+
+                <p className="text-primary small">
+                    {descCardServico}
+                </p>
+
+                <p className="small mb-1">
+                    <strong>{lugarCardServico}</strong>
+                </p>
+
+                <p className="small mb-1">
+                    Disponível hoje
+                </p>
+
+                <p className="small mb-2">
+                    {menorDescCardServico}
+                </p>
+
+                <p className="small mb-3">
+                    A partir{" "}
+                    <span className="text-primary fw-bold ms-1">
+                        {precoCardServico}
+                    </span>
+                </p>
+
+                <button className="btn btn-primary w-100 mt-auto">
+                    Ver profissionais
+                </button>
+
+            </div>
+
+        </div>
+    );
 }
