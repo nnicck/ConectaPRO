@@ -85,8 +85,7 @@ export default function Home() {
 
     </div>
 
-    <div className="container py-4 mt-4">
-
+    <div className="container py-4 mt-4" >
     <h3 className="text-center fw-bold mb-4">
         Serviços Disponíveis
     </h3>
@@ -95,7 +94,7 @@ export default function Home() {
 
         {servicos.map((servico) => (
             <div
-                className="col-12 col-md-5 col-lg-4"
+                className="col-12 col-sm-6 col-lg-3"
                 key={servico.titulo}
             >
                 <CardServicos
@@ -111,12 +110,8 @@ export default function Home() {
 
     </div>
 
-</div>
-  
-    
-    </main>
-
-
+  </div>
+  </main>
     </>
   );
 }

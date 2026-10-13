@@ -7,7 +7,7 @@ export default function CardServicos({
     precoCardServico
 }) {
     return (
-        <div className="card h-100 rounded-2 w-75">
+        <div className="card h-100 rounded-2 w-100">
 
             <div className="card-body d-flex flex-column">
 
