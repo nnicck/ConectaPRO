@@ -21,6 +21,23 @@ export function criarProdutoService({ produtoModel }){
         return produto;
     }
 
+    async function deletarPorId(idRecebido) {
+        const id = Number(idRecebido);
+
+        if (!Number.isInteger(id) || id <= 0) {
+            throw new Error("ID deve ser um número inteiro positivo");
+        }
+
+        const deletado = await produtoModel.deletarPorId(id);
+
+        if (!deletado) {
+            throw new Error(`Produto ${id} não encontrado`);
+        }
+
+        //Lança true pois, o produto foi deletado com sucesso
+        return true;
+    }
+
     async function criar(dados){
         const produto = new Produto({ id: 1,  ...dados});
 
@@ -32,5 +49,28 @@ export function criarProdutoService({ produtoModel }){
         });
     }
 
-    return {listar, buscarPorId, criar };
+    async function atualizar(idRecebido, dados) {
+        const id = Number(idRecebido);
+
+        if (!Number.isInteger(id) || id <= 0) {
+            throw new Error("ID deve ser um número inteiro positivo");
+        }
+
+        const produtoExistente = await produtoModel.buscarPorId(id);
+
+        if (!produtoExistente) {
+            throw new Error(`Produto ${id} não encontrado`);
+        }
+
+        const produto = new Produto({ id, ...dados });
+
+        return produtoModel.atualizar(id, {
+            nome: produto.nome,
+            preco: produto.preco,
+            estoque: produto.estoque,
+            categoria: produto.categoria
+        });
+    }
+
+    return {listar, buscarPorId, criar, deletarPorId, atualizar };
 }

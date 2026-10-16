@@ -32,3 +32,7 @@ for(const arquivo of arquivos){
 if(!process.exitCode){
     console.log(`${arquivos.length} arquivos Javascript verificados`);
 }
+
+// Procura arquivos .js em todas as pastas do projeto, exceto node_modules.
+// Verifica a sintaxe de cada arquivo usando o comando node --check.
+// Interrompe a verificação se encontrar um arquivo com erro de sintaxe.

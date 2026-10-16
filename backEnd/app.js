@@ -19,7 +19,7 @@ const produtoController = criarProdutoController({ produtoService });
 const produtoRoutes = criarProdutoRoutes({ produtoController });
 
 
-
+//Apenas testando o servidor
 app.get("/api/check", (req, res) => {
     res.status(200).json({ status: "ok", mensagem: "Servidor funcionando via HTTP" });
 });

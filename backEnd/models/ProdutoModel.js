@@ -1,4 +1,6 @@
+// pool = conexões do MySQL,
 export function criarProdutoModel({ pool }){
+
     async function listarTodos(){
         const [linhas] = await pool.query("SELECT * FROM produtos");
         return linhas.map(p => ({...p, preco: Number(p.preco)}));
@@ -21,5 +23,31 @@ export function criarProdutoModel({ pool }){
         return {...produto, id:resultado.insertId};
     }
 
-    return {listarTodos, buscarPorId, criar};
+    async function deletarPorId(id) {
+        const [resultado] = await pool.query("DELETE FROM produtos WHERE id = ?", [id]);
+
+        if (resultado.affectedRows === 0) { //Verifica se teve alguma linha afetada
+            return null;
+        }
+
+        return true;
+    }
+
+    async function atualizar(id, produto) {
+        const sql = "UPDATE produtos SET nome = ?, preco = ?, estoque = ?, categoria = ? WHERE id = ?";
+
+        const valores = [produto.nome, produto.preco, produto.estoque, produto.categoria, id];
+        const [resultado] = await pool.query(sql, valores);
+
+        if (resultado.affectedRows === 0) { //Verifica se é o mesmo valor do registro
+            const existente = await buscarPorId(id); //Verifica existencia
+            if (!existente) { //Se não existir volta null
+                return null;
+            }
+        }
+
+        return { ...produto, id: Number(id) };
+    }
+
+    return {listarTodos, buscarPorId, criar, deletarPorId, atualizar};
 }
