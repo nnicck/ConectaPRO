@@ -1,6 +1,7 @@
 import styles from "./login.module.css";
 
 import BarraNavegacao from "@/components/BarraNavegacao";
+import Rodape from "@/components/Rodape";
 import Link from "next/link";
 
 export default function Login() {
@@ -128,6 +129,7 @@ export default function Login() {
                 </div>
 
             </section>
+            <Rodape></Rodape>
 
         </main>
     );

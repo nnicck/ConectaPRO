@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import EtapasContaProfissonal from "@/components/EtapasContaProfissional";
@@ -9,13 +9,6 @@ import Rodape from "@/components/Rodape";
 export default function ServicosProfissional() {
     const [modalidade, setModalidade] = useState("");
     const [disponibilidade, setDisponibilidade] = useState("Seg - Sex");
-
-    const router = useRouter();
-
-    function continuar(){
-        router.push("/criarContaProfissional/enderecoProf");
-    }
-
 
     return (
         <div className="d-flex flex-column min-vh-100">
@@ -29,7 +22,7 @@ export default function ServicosProfissional() {
 
             <main className="container flex-grow-1 py-4 py-md-5">
                 <div className="d-flex justify-content-center mb-5">
-                    <EtapasContaProfissonal />
+                    <EtapasContaProfissonal etapaAtiva={2}/>
                 </div>
 
                 <h2 className="text-center mb-4">
@@ -157,14 +150,13 @@ export default function ServicosProfissional() {
                     </div>
 
                     <div className="d-flex justify-content-center mt-5">
-                        <button
-                            type="submit"
-                            className="btn btn-primary btn-lg fw-bold w-100"
-                            style={{ maxWidth: "690px" }}
-                            onClick={continuar}
-                        >
-                            Próximo
-                        </button>
+                    <Link
+                        href="/criarContaProfissional/enderecoProf"
+                        className="btn btn-primary mt-5"
+                        style={{ width: "300px" }}
+                    >
+                        Próximo
+                    </Link>
                     </div>
                 </form>
             </main>

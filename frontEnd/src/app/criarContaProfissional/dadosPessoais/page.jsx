@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import EtapasContaProfissonal from "@/components/EtapasContaProfissional";
@@ -7,12 +7,6 @@ import BarraNavegacao from "@/components/BarraNavegacao";
 import Rodape from "@/components/Rodape";
 
 export default function CadastroProfissional() {
-    const router = useRouter();
-
-    function continuar(){
-        router.push("/criarContaProfissional/servicosProf");
-    }
-
     return (
         <>
         <div className="d-flex flex-column min-vh-100">
@@ -21,11 +15,11 @@ export default function CadastroProfissional() {
         </header>
             <main className="container flex-grow-1 py-5 mt-4">
               <div className="d-flex justify-content-center mb-5">
-                  <EtapasContaProfissonal />
+                  <EtapasContaProfissonal etapaAtiva={1}/>
               </div>
 
               {/* FOTO E FORMULÁRIO */}
-              <div className="row justify-content-center align-items-center g-5">
+              <div className="row justify-content-center align-items-center g-5" style={{ marginTop: "100px" }}>
 
                     {/* FOTO DE PERFIL */}
                     <div className="col-12 col-md-4 col-lg-3">
@@ -139,14 +133,7 @@ export default function CadastroProfissional() {
                             </div>
 
                             {/* BOTÃO */}
-                            <button
-                                type="button"
-                                className="btn btn-primary w-100 mt-5"
-                                onClick={continuar}
-                            >
-                                Continuar
-                            </button>
-
+                            <Link href="/criarContaProfissional/servicosProf" className="btn btn-primary w-100 mt-5"> Continuar</Link>
                         </form>
                     </div>
 

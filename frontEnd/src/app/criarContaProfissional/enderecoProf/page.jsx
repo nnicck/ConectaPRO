@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import EtapasContaProfissonal from "@/components/EtapasContaProfissional";
@@ -24,7 +24,7 @@ export default function LocalizacaoProfissional() {
                 <div className="row justify-content-center mt-4">
                     <div className="col-12 col-lg-8">
 
-                        <EtapasContaProfissonal />
+                        <EtapasContaProfissonal etapaAtiva={3}/>
 
                         <div className="mt-4 mb-4">
                             <h2 className="fw-bold">
@@ -146,12 +146,12 @@ export default function LocalizacaoProfissional() {
                             <div className="d-flex justify-content-between mt-4">
 
 
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary w-100 py-2 mt-4"
+                            <Link
+                                href="/criarContaProfissional/segurancaProf"
+                                className="btn btn-primary mt-5 w-100"
                                 >
-                                    Continuar
-                                </button>
+                                Próximo
+                                </Link>
                             </div>
                         </form>
 
