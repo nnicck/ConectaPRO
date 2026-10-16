@@ -4,6 +4,8 @@ import Link from "next/link";
 import BarraNavegacao from "@/components/BarraNavegacao";
 import CardServicos from "@/components/CardServicos";
 import Rodape from "@/components/Rodape";
+import CardProfissional from "@/components/CardProfissionais";
+import BeneficioProfissional from "@/components/BeneficioProf";
 
 const servicos = [
   {
@@ -114,95 +116,24 @@ export default function Home() {
 
   </div>
 
-  <section className="container py-5">
-    <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
-      <div>
-        <span className="text-primary fw-semibold">CONHEÇA OS PROFISSIONAIS</span>
-        <h2 className="fw-bold mt-2">Profissionais em destaque</h2>
-        <p className="text-secondary mb-0">
-          Encontre profissionais para ajudar no seu dia a dia.
-        </p>
-      </div>
-
-      <Link
-        href="/servicos"
-        className="btn btn-outline-primary"
-      >
-        Ver todos os serviços
-      </Link>
-    </div>
-
-    <div className="row g-4">
-      {[
-        {
-          nome: "Ana Oliveira",
-          profissao: "Diarista",
-          local: "Santo André - SP",
-          img: "/diarista.png",
-        },
-        {
-          nome: "Carlos Santos",
-          profissao: "Eletricista",
-          local: "São Caetano - SP",
-          img: "/eletricista.png",
-        },
-        {
-          nome: "Marcos Lima",
-          profissao: "Encanador",
-          local: "São Paulo - SP",
-          img: "/encanador.png",
-        },
-      ].map((profissional) => (
-        <div className="col-12 col-md-4" key={profissional.nome}>
-          <div
-            className="card h-100 border-0 shadow-sm"
-            style={{ borderRadius: "14px" }}
-          >
-            <div className="card-body p-4">
-              <div className="d-flex align-items-center gap-3 mb-3">
-                <img
-                  src={profissional.img}
-                  alt={profissional.profissao}
-                  className="rounded-circle"
-                  style={{
-                    width: "75px",
-                    height: "75px",
-                    objectFit: "cover",
-                  }}
-                />
-
-                <div>
-                  <h5 className="fw-bold mb-1">{profissional.nome}</h5>
-                  <span className="text-primary">
-                    {profissional.profissao}
-                  </span>
-                </div>
-              </div>
-
-              <p className="text-secondary mb-3">
-                <i className="bi bi-geo-alt me-2"></i>
-                {profissional.local}
-              </p>
-
-              <div className="d-flex align-items-center gap-2 mb-3">
-                <i className="bi bi-person-check text-primary fs-5"></i>
-                <span className="small text-secondary">
-                  Profissional cadastrado
-                </span>
-              </div>
-
-              <Link
-                href="/servicos"
-                className="btn btn-outline-primary w-100"
-              >
-                Ver profissional
-              </Link>
-            </div>
-          </div>
+{/* Profissionais em destaque */}
+<section className="py-5" style={{ backgroundColor: "#F8FAFC" }}>
+    <div className="container">
+        <div className="text-center mb-5">
+            <span className="text-primary fw-semibold small">
+                CONHEÇA NOSSOS PROFISSIONAIS
+            </span>
+            <h2 className="fw-bold mt-2">Profissionais em destaque</h2>
+            <p className="text-secondary mb-0">
+                Conheça profissionais de diferentes áreas de atuação.
+            </p>
         </div>
-      ))}
+       
+        <CardProfissional />
+    
+        
     </div>
-  </section>
+</section>
 
   {/* COMO FUNCIONA */}
   <section className="py-5" style={{ backgroundColor: "#FFFFFF" }}>
@@ -284,39 +215,94 @@ export default function Home() {
 
   {/* CONVITE PARA PROFISSIONAIS */}
   <section className="container py-5">
-    <div
-      className="p-4 p-md-5 rounded-4"
-      style={{
-        backgroundColor: "#2864e8",
-        color: "#FFFFFF",
-      }}
-    >
-      <div className="row align-items-center g-4">
-        <div className="col-12 col-lg-8">
-          <h2 className="fw-bold mb-3">
-            Divulgue seus serviços com o ConectaPro!
-          </h2>
+      <div
+        className="p-4 p-md-5 rounded-4 shadow-sm"
+        style={{
+          backgroundColor: "#2864e8",
+          color: "#FFFFFF",
+        }}
+      >
+        <div className="row align-items-center g-4">
+          {/* Conteúdo */}
+          <div className="col-12 col-lg-8">
+            <span className="badge bg-white mb-3 text-primary px-3 py-2">
+              PARA PROFISSIONAIS
+            </span>
 
-          <p className="mb-0 fs-5">
-            Cadastre-se como profissional e apresente seu trabalho a
-            pessoas que procuram os seus serviços.
-          </p>
-        </div>
+            <h2 className="fw-bold mb-3">
+              Divulgue seus serviços com o ConectaPro!
+            </h2>
 
-        <div className="col-12 col-lg-4 text-lg-end">
-          <Link
-            href="/criarContaProfissional"
-            className="btn btn-light btn-lg fw-semibold px-4"
-            style={{ color: "#2864e8" }}
-          >
-            Cadastrar como profissional
-          </Link>
+            <p className="fs-5 mb-4">
+              Mostre seu talento, conquiste novos clientes e amplie suas
+              oportunidades de trabalho.
+            </p>
+
+            {/* Benefícios reutilizáveis */}
+            <div className="row g-4">
+              <BeneficioProfissional
+                icone="bi-megaphone"
+                titulo="Mais visibilidade"
+                descricao="Apresente seus serviços para novos clientes."
+              />
+
+              <BeneficioProfissional
+                icone="bi-people"
+                titulo="Novas oportunidades"
+                descricao="Conecte-se com pessoas que procuram seu trabalho."
+              />
+
+              <BeneficioProfissional
+                icone="bi-person-badge"
+                titulo="Perfil profissional"
+                descricao="Destaque suas habilidades e experiência."
+              />
+
+              <BeneficioProfissional
+                icone="bi-geo-alt"
+                titulo="Alcance local"
+                descricao="Facilite o contato com clientes da sua região."
+              />
+            </div>
+          </div>
+
+          {/* Card de cadastro */}
+          <div className="col-12 col-lg-4">
+            <div className="card border-0 rounded-4 shadow-sm text-center p-4">
+              <div className="card-body">
+                <i
+                  className="bi bi-briefcase-fill fs-1"
+                  style={{ color: "#2864e8" }}
+                ></i>
+
+                <h4 className="card-title fw-bold mt-3">
+                  Pronto para começar?
+                </h4>
+
+                <p className="card-text text-secondary my-3">
+                  Crie seu perfil e dê o próximo passo para divulgar
+                  seu trabalho.
+                </p>
+
+                <Link
+                  href="/criarContaProfissional"
+                  className="btn btn-primary btn-lg w-100 fw-semibold"
+                  style={{ backgroundColor: "#2864e8", borderColor: "#2864e8" }}
+                >
+                  Cadastrar como profissional
+                  <i className="bi bi-arrow-right ms-2"></i>
+                </Link>
+
+                <p className="small text-secondary mt-3 mb-0">
+                  <i className="bi bi-check-circle me-1"></i>
+                  Apresente seus serviços no ConectaPro
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-
+    </section>
   <Rodape></Rodape>
   </main>
     </>

@@ -1,0 +1,96 @@
+
+.carrossel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 4px;
+}
+
+.trilho {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: movimentoInfinito 50s linear infinite;
+}
+
+.item {
+    flex: 0 0 280px;
+    width: 280px;
+}
+
+.profissionalCard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border: 1px solid #dbe7ff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(40, 100, 232, 0.12);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.profissionalCard:hover {
+    background-color: #ffffff;
+    box-shadow: 0 10px 26px rgba(40, 100, 232, 0.20);
+    transform: translateY(-3px);
+}
+
+.foto {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.estrela {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    color: #ffc107;
+    font-size: 15px;
+}
+
+.botao {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@keyframes movimentoInfinito {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 576px) {
+    .item {
+        flex-basis: 250px;
+        width: 250px;
+    }
+
+    .trilho {
+        gap: 14px;
+        animation-duration: 45s;
+    }
+
+    .foto {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trilho {
+        animation: none;
+    }
+}
