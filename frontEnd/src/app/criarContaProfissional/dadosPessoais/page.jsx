@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import EtapasContaProfissonal from "@/components/EtapasContaProfissional";
 import BarraNavegacao from "@/components/BarraNavegacao";
 import Rodape from "@/components/Rodape";
+import BotoesNavegacao from "@/components/BotoesNavegacao";
 
 export default function CadastroProfissional() {
     const router = useRouter();
@@ -101,14 +102,14 @@ export default function CadastroProfissional() {
                 />
             </header>
 
-            <main className="container flex-grow-1 py-5 mt-4">
+            <main className="container flex-grow-1 py-5 mt-2">
                 <div className="d-flex justify-content-center mb-5">
                     <EtapasContaProfissonal etapaAtiva={1} />
                 </div>
 
                 <div
                     className="row justify-content-center align-items-center g-5"
-                    style={{ marginTop: "50px" }}
+                    style={{ marginTop: "10px" }}
                 >
                     {/* FOTO DE PERFIL */}
                     <div className="col-12 col-md-4 col-lg-3">
@@ -243,26 +244,10 @@ export default function CadastroProfissional() {
                                 </div>
                             )}
 
-                            <button
-                                type="submit"
-                                className="btn btn-primary w-100 mt-5"
-                                disabled={carregando}
-                            >
-                                {carregando ? (
-                                    <>
-                                        <span
-                                            className="spinner-border spinner-border-sm me-2"
-                                            aria-hidden="true"
-                                        ></span>
-                                        Enviando cadastro...
-                                    </>
-                                ) : (
-                                    <>
-                                        Continuar
-                                        <i className="bi bi-arrow-right ms-2"></i>
-                                    </>
-                                )}
-                            </button>
+                            <BotoesNavegacao
+                            voltar="/"
+                            proximo="/criarContaProfissional/servicosProf"
+                            />
                         </form>
                     </div>
                 </div>

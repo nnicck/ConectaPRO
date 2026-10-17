@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import EtapasContaProfissonal from "@/components/EtapasContaProfissional";
 import BarraNavegacao from "@/components/BarraNavegacao";
 import Rodape from "@/components/Rodape";
+import BotoesNavegacao from "@/components/BotoesNavegacao";
 
 export default function ServicosProfissional() {
     const [modalidade, setModalidade] = useState("");
@@ -149,15 +150,12 @@ export default function ServicosProfissional() {
                         </div>
                     </div>
 
-                    <div className="d-flex justify-content-center mt-5">
-                    <Link
-                        href="/criarContaProfissional/enderecoProf"
-                        className="btn btn-primary mt-5"
-                        style={{ width: "300px" }}
-                    >
-                        Próximo
-                    </Link>
-                    </div>
+                    
+                    <BotoesNavegacao
+                    voltar="/criarContaProfissional/dadosPessoais"
+                    proximo="/criarContaProfissional/enderecoProf"
+                    />
+                    
                 </form>
             </main>
 

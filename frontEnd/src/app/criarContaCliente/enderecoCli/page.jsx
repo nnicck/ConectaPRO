@@ -6,26 +6,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import EtapasContaCliente from "@/components/EtapaContaCliente";
 import BarraNavegacao from "@/components/BarraNavegacao";
 import Rodape from "@/components/Rodape";
+import BotoesNavegacao from "@/components/BotoesNavegacao";
 
 export default function EnderecoCliente() {
 return (
-<div className="d-flex flex-column min-vh-100">
-<header>
-<BarraNavegacao
-                 botaoUm="Cadastre-se"
-                 botaoDois="Cadastre-se como profissional"
-                 botaoTres="Entrar"
-             />
-</header>
-
-        <main className="container flex-grow-1 py-4">
+    <>
+    <div className="d-flex flex-column min-vh-100">
+    <header>
+    <BarraNavegacao botaoUm="Cadastre-se" botaoDois="Cadastre-se como profissional" botaoTres="Entrar"/>
+    </header>
+        <main className="container flex-grow-1 py-4 mt-4">
             {/* ETAPAS DO CADASTRO */}
             <div className="d-flex justify-content-center mb-4">
                 <EtapasContaCliente etapaAtiva={2} />
             </div>
 
             {/* FORMULÁRIO DE ENDEREÇO */}
-            <div className="row justify-content-center">
+            <div className="row justify-content-center"  style={{ marginTop: "70px" }}>
                 <div className="col-12 col-lg-10 col-xl-9">
                     <h2 className="text-center mb-4">
                         Localização
@@ -133,26 +130,10 @@ return (
                             </div>
                         </div>
 
-                        {/* BOTÕES */}
-                        <div className="row justify-content-center mt-4">
-                            <div className="col-12 col-md-8 col-lg-6">
-                                <div className="d-flex gap-3">
-                                    <Link
-                                        href="/criarContaCliente"
-                                        className="btn btn-outline-primary flex-fill py-2"
-                                    >
-                                        Voltar
-                                    </Link>
-
-                                    <Link
-                                        href="/criarContaCliente/segurancaCli"
-                                        className="btn btn-primary flex-fill py-2"
-                                    >
-                                        Próximo
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
+                        <BotoesNavegacao
+                        voltar="/criarContaCliente/dadosPessoaisCli"
+                        proximo="/criarContaCliente/segurancaCli"
+                        />
                     </form>
                 </div>
             </div>
@@ -160,6 +141,7 @@ return (
 
         <Rodape />
     </div>
+    </>
 );
 
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import BarraNavegacao from "@/components/BarraNavegacao";
 import EtapasContaProfissonal from "@/components/EtapasContaProfissional";
 import Rodape from "@/components/Rodape";
+import BotoesNavegacao from "@/components/BotoesNavegacao";
 
 export default function SegurancaProf() {
 return (
@@ -68,14 +69,13 @@ return (
                         </div>
 
                         {/* BOTÃO PRÓXIMO */}
-                        <div className="d-flex justify-content-between mt-4">
-                            <button
-                                type="submit"
-                                className="btn btn-primary mt-5 w-100"
-                            >
-                                Próximo
-                            </button>
-                        </div>
+                       
+
+                        <BotoesNavegacao
+                        voltar="/criarContaProfissional/enderecoProf"
+                         proximo="#"
+                        />
+                        
                     </form>
 
                 </div>

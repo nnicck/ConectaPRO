@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import EtapasContaProfissonal from "@/components/EtapasContaProfissional";
 import BarraNavegacao from "@/components/BarraNavegacao";
 import Rodape from "@/components/Rodape";
+import BotoesNavegacao from "@/components/BotoesNavegacao";
 
 export default function LocalizacaoProfissional() {
 
@@ -143,16 +144,11 @@ export default function LocalizacaoProfissional() {
 
                             </div>
 
-                            <div className="d-flex justify-content-between mt-4">
-
-
-                            <Link
-                                href="/criarContaProfissional/segurancaProf"
-                                className="btn btn-primary mt-5 w-100"
-                                >
-                                Próximo
-                                </Link>
-                            </div>
+                            <BotoesNavegacao
+                            voltar="/criarContaProfissional/servicosProf"
+                            proximo="/criarContaProfissional/segurancaProf"
+                            />
+                           
                         </form>
 
                     </div>

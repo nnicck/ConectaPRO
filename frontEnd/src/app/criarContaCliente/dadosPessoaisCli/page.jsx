@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import EtapasContaCliente from "@/components/EtapaContaCliente";
 import BarraNavegacao from "@/components/BarraNavegacao";
 import Rodape from "@/components/Rodape";
+import BotoesNavegacao from "@/components/BotoesNavegacao";
 
 export default function CadastroCliente() {
     return (
@@ -133,7 +134,11 @@ export default function CadastroCliente() {
                             </div>
 
                             {/* BOTÃO */}
-                            <Link href="/criarContaCliente/enderecoCli" className="btn btn-primary w-100 mt-5"> Continuar</Link>
+                            
+                            <BotoesNavegacao
+                            voltar="/"
+                            proximo="/criarContaCliente/enderecoCli"
+                            />
                         </form>
                     </div>
 

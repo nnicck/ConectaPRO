@@ -5,7 +5,7 @@ import BarraNavegacao from "@/components/BarraNavegacao";
 import CardServicos from "@/components/CardServicos";
 import Rodape from "@/components/Rodape";
 import CardProfissional from "@/components/CardProfissionais";
-import BeneficioProfissional from "@/components/BeneficioProf";
+
 
 const servicos = [
   {
@@ -213,96 +213,120 @@ export default function Home() {
     </div>
   </section>
 
-  {/* CONVITE PARA PROFISSIONAIS */}
-  <section className="container py-5">
-      <div
-        className="p-4 p-md-5 rounded-4 shadow-sm"
-        style={{
-          backgroundColor: "#2864e8",
-          color: "#FFFFFF",
-        }}
-      >
-        <div className="row align-items-center g-4">
-          {/* Conteúdo */}
-          <div className="col-12 col-lg-8">
-            <span className="badge bg-white mb-3 text-primary px-3 py-2">
-              PARA PROFISSIONAIS
-            </span>
+  {/* POR QUE ESCOLHER O CONECTAPRO */}
+<section className="py-5" style={{ backgroundColor: "#FFFFFF" }}>
+  <div className="container py-4">
 
-            <h2 className="fw-bold mb-3">
-              Divulgue seus serviços com o ConectaPro!
-            </h2>
+    <div className="row align-items-center g-5">
 
-            <p className="fs-5 mb-4">
-              Mostre seu talento, conquiste novos clientes e amplie suas
-              oportunidades de trabalho.
+      {/* Texto principal */}
+      <div className="col-12 col-lg-5">
+        <span className="text-primary fw-semibold small">
+          SUA BUSCA, MAIS SIMPLES
+        </span>
+
+        <h2
+          className="fw-bold mt-2 mb-3"
+          style={{ color: "#17356F" }}
+        >
+          Encontre o profissional ideal sem complicação.
+        </h2>
+
+        <p className="text-secondary mb-4">
+          O ConectaPro conecta você a profissionais de diferentes
+          áreas, facilitando a busca por serviços para sua casa
+          ou seu negócio.
+        </p>
+
+        <Link
+          href="/profissionais"
+          className="btn btn-primary px-4 py-3 fw-semibold"
+          style={{
+            backgroundColor: "#2864E8",
+            borderColor: "#2864E8",
+          }}
+        >
+          Encontrar profissionais
+          <i className="bi bi-arrow-right ms-2"></i>
+        </Link>
+      </div>
+
+      {/* Diferenciais sem cards */}
+      <div className="col-12 col-lg-7">
+
+        <div className="d-flex align-items-start gap-3 pb-4 mb-4 border-bottom">
+          <i
+            className="bi bi-grid fs-2 flex-shrink-0"
+            style={{ color: "#2864E8" }}
+          ></i>
+
+          <div>
+            <h5 className="fw-bold mb-2">
+              Diversas categorias de serviços
+            </h5>
+            <p className="text-secondary mb-0">
+              Encontre diaristas, eletricistas, encanadores,
+              pintores e outros profissionais em um só lugar.
             </p>
-
-            {/* Benefícios reutilizáveis */}
-            <div className="row g-4">
-              <BeneficioProfissional
-                icone="bi-megaphone"
-                titulo="Mais visibilidade"
-                descricao="Apresente seus serviços para novos clientes."
-              />
-
-              <BeneficioProfissional
-                icone="bi-people"
-                titulo="Novas oportunidades"
-                descricao="Conecte-se com pessoas que procuram seu trabalho."
-              />
-
-              <BeneficioProfissional
-                icone="bi-person-badge"
-                titulo="Perfil profissional"
-                descricao="Destaque suas habilidades e experiência."
-              />
-
-              <BeneficioProfissional
-                icone="bi-geo-alt"
-                titulo="Alcance local"
-                descricao="Facilite o contato com clientes da sua região."
-              />
-            </div>
-          </div>
-
-          {/* Card de cadastro */}
-          <div className="col-12 col-lg-4">
-            <div className="card border-0 rounded-4 shadow-sm text-center p-4">
-              <div className="card-body">
-                <i
-                  className="bi bi-briefcase-fill fs-1"
-                  style={{ color: "#2864e8" }}
-                ></i>
-
-                <h4 className="card-title fw-bold mt-3">
-                  Pronto para começar?
-                </h4>
-
-                <p className="card-text text-secondary my-3">
-                  Crie seu perfil e dê o próximo passo para divulgar
-                  seu trabalho.
-                </p>
-
-                <Link
-                  href="/criarContaProfissional"
-                  className="btn btn-primary btn-lg w-100 fw-semibold"
-                  style={{ backgroundColor: "#2864e8", borderColor: "#2864e8" }}
-                >
-                  Cadastrar como profissional
-                  <i className="bi bi-arrow-right ms-2"></i>
-                </Link>
-
-                <p className="small text-secondary mt-3 mb-0">
-                  <i className="bi bi-check-circle me-1"></i>
-                  Apresente seus serviços no ConectaPro
-                </p>
-              </div>
-            </div>
           </div>
         </div>
+
+        <div className="d-flex align-items-start gap-3 pb-4 mb-4 border-bottom">
+          <i
+            className="bi bi-person-check fs-2 flex-shrink-0"
+            style={{ color: "#2864E8" }}
+          ></i>
+
+          <div>
+            <h5 className="fw-bold mb-2">
+              Conheça os profissionais
+            </h5>
+            <p className="text-secondary mb-0">
+              Consulte os perfis, conheça os serviços oferecidos
+              e encontre uma opção adequada à sua necessidade.
+            </p>
+          </div>
+        </div>
+
+        <div className="d-flex align-items-start gap-3 pb-4 mb-4 border-bottom">
+          <i
+            className="bi bi-geo-alt fs-2 flex-shrink-0"
+            style={{ color: "#2864E8" }}
+          ></i>
+
+          <div>
+            <h5 className="fw-bold mb-2">
+              Opções para sua região
+            </h5>
+            <p className="text-secondary mb-0">
+              Facilite sua busca por profissionais que atendam
+              na localização desejada.
+            </p>
+          </div>
+        </div>
+
+        <div className="d-flex align-items-start gap-3">
+          <i
+            className="bi bi-chat-dots fs-2 flex-shrink-0"
+            style={{ color: "#2864E8" }}
+          ></i>
+
+          <div>
+            <h5 className="fw-bold mb-2">
+              Mais praticidade para contratar
+            </h5>
+            <p className="text-secondary mb-0">
+              Entre em contato com o profissional para conversar
+              sobre o serviço e combinar os detalhes.
+            </p>
+          </div>
+        </div>
+
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
   <Rodape></Rodape>
   </main>
     </>
