@@ -1,48 +1,26 @@
 import styles from "./login.module.css";
 
-import BarraNavegacao from "@/components/BarraNavegacao";
-import Rodape from "@/components/Rodape";
 import Link from "next/link";
 
 export default function Login() {
     return (
-        <main style={{ backgroundColor: "#F8FAFC" }}>
-
-            <BarraNavegacao
-                botaoUm="Cadastre-se"
-                botaoDois="Cadastre-se como profissional"
-                botaoTres="Entrar"
-            />
-
-            <section className="d-flex">
-
+        <main className="d-flex">
                 {/* Lado esquerdo */}
                 <div className={`d-flex flex-column ${styles.sideBanner}`}>
-
                     <div className="d-flex flex-column gap-4">
-
-                        <h1 className="text-center">
-                            ConectaPRO
-                        </h1>
-
-                        <h2 className="w-75">
-                            Conectando clientes aos melhores profissionais autônomos.
-                        </h2>
-
+                        <h1 className="text-center">ConectaPRO</h1>
+                        <h2 className="w-75">Conectando clientes aos melhores profissionais autônomos.</h2>
                         <p className="w-75">
                             Encontre eletricistas, diaristas, pedreiros,
                             encanadores e muitos outros profissionais
                             verificados em um único lugar.
                         </p>
-
                     </div>
-
                     <div>
                         <p>✔️ Profissionais verificados.</p>
                         <p>⭐ Avaliações e histórico de serviços.</p>
                         <p>💬 Chat e acompanhamento da contratação.</p>
                     </div>
-
                 </div>
 
 
@@ -127,10 +105,6 @@ export default function Login() {
                     </Link>
 
                 </div>
-
-            </section>
-            <Rodape></Rodape>
-
         </main>
     );
 }

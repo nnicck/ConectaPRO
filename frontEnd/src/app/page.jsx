@@ -66,8 +66,6 @@ export default function Home() {
     <>
     <main style={{backgroundColor: "#F8FAFC"}}>
 
-    <BarraNavegacao botaoUm="Cadastre-se" botaoDois="Cadastre-se como profissional" botaoTres="Entrar"></BarraNavegacao>
-
     {/* banner */}
     <div className="container-fluid" 
     style={{ height: "650px", backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), 
@@ -362,8 +360,6 @@ export default function Home() {
     </div>
   </div>
 </section>
-
-  <Rodape></Rodape>
   </main>
     </>
   );

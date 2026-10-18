@@ -12,15 +12,6 @@ export default function LocalizacaoProfissional() {
     return (
         <>
         <div className="d-flex flex-column min-vh-100">
-            <header>
-                <BarraNavegacao
-                    botaoUm="Cadastre-se"
-                    botaoDois="Cadastre-se como profissional"
-                    botaoTres="Entrar"
-                />
-            </header>
-
-
             <main className="container py-5 flex-grow-1">
                 <div className="row justify-content-center mt-4">
                     <div className="col-12 col-lg-8">
@@ -154,8 +145,6 @@ export default function LocalizacaoProfissional() {
                     </div>
                 </div>
             </main>
-
-            <Rodape></Rodape>
         </div>
         </>
     );

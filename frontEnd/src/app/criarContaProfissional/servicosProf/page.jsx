@@ -13,14 +13,6 @@ export default function ServicosProfissional() {
 
     return (
         <div className="d-flex flex-column min-vh-100">
-            <header>
-                <BarraNavegacao
-                    botaoUm="Cadastre-se"
-                    botaoDois="Cadastre-se como profissional"
-                    botaoTres="Entrar"
-                />
-            </header>
-
             <main className="container flex-grow-1 py-4 py-md-5">
                 <div className="d-flex justify-content-center mb-5">
                     <EtapasContaProfissonal etapaAtiva={2}/>
@@ -158,8 +150,6 @@ export default function ServicosProfissional() {
                     
                 </form>
             </main>
-
-            <Rodape />
         </div>
     );
 }

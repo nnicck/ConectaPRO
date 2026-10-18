@@ -12,9 +12,6 @@ export default function EnderecoCliente() {
 return (
     <>
     <div className="d-flex flex-column min-vh-100">
-    <header>
-    <BarraNavegacao botaoUm="Cadastre-se" botaoDois="Cadastre-se como profissional" botaoTres="Entrar"/>
-    </header>
         <main className="container flex-grow-1 py-4 mt-4">
             {/* ETAPAS DO CADASTRO */}
             <div className="d-flex justify-content-center mb-4">
@@ -138,8 +135,6 @@ return (
                 </div>
             </div>
         </main>
-
-        <Rodape />
     </div>
     </>
 );
