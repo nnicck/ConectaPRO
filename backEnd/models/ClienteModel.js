@@ -17,12 +17,13 @@ export function criarClienteModel({ pool }){
     }
 
     async function criar(cliente){
-        const sql = "INSERT INTO clientes(nome, email, telefone, senha, foto) VALUES(?, ?, ?, ?, ?)";
+        const sql = "INSERT INTO clientes(nome, email, telefone, localizacao, senha, foto) VALUES(?, ?, ?, ?, ?, ?)";
 
         const valores = [
             cliente.nome,
             cliente.email,
             cliente.telefone,
+            cliente.localizacao,
             cliente.senha,
             cliente.foto
         ];
@@ -42,12 +43,13 @@ export function criarClienteModel({ pool }){
     }
 
     async function atualizar(id, cliente) {
-        const sql = "UPDATE clientes SET nome = ?, email = ?, telefone = ?, senha = ?, foto = ? WHERE id_cliente = ?";
+        const sql = "UPDATE clientes SET nome = ?, email = ?, telefone = ?, localizacao = ?, senha = ?, foto = ? WHERE id_cliente = ?";
 
         const valores = [
             cliente.nome,
             cliente.email,
             cliente.telefone,
+            cliente.localizacao,
             cliente.senha,
             cliente.foto,
             id
