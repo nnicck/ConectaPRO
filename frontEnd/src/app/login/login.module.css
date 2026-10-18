@@ -12,8 +12,8 @@
 }
 
 .btn {
-    color: #F8FAFC;
-    background-color: #2563eb;
+    color: #0d3b66;
+    background-color: #e8f1f8;
     border-radius: 8px;
     padding: 10px 18px;
     font-weight: 600;
@@ -21,7 +21,13 @@
 }
 
 .btn:hover {
-    color: #0d3b66;
-    background-color: #e8f1f8;
+    color: #F8FAFC;
+    background-color: #2563eb;
     border: 1px solid rgb(185, 190, 213);
+}
+
+.selecionado {
+    background-color: #2563eb;
+    color: #F8FAFC;
+    font-weight: 600;
 }
