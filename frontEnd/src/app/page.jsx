@@ -1,11 +1,12 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Link from "next/link";
-import BarraNavegacao from "@/components/BarraNavegacao";
-import CardServicos from "@/components/CardServicos";
-import Rodape from "@/components/Rodape";
-import CardProfissional from "@/components/CardProfissionais";
+"use client";
 
+import { useEffect, useState } from "react";
+import Link from "next/link";
+
+import styles from "./page.module.css";
+
+import CardServicos from "@/components/CardServicos";
+import CardProfissional from "@/components/CardProfissionais";
 
 const servicos = [
   {
@@ -45,11 +46,23 @@ const servicos = [
 ];
 
 export default function Home() {
+  const [ listaProfissionais, setListaProfissionais ] = useState([]);
+  const [ msgErro, setMsgErro ] = useState(""); 
+
+  useEffect(() => {
+      fetch("http://localhost:3001/api/profissional")
+      .then(res => res.json())
+          .then(data => {
+              console.log(data)
+              setListaProfissionais(data.dados);
+              setMsgErro("");
+          })
+      .catch(erro => setMsgErro(erro.message));
+  }, []);
+
   return (
     <>
     <main style={{backgroundColor: "#F8FAFC"}}>
-
-    <BarraNavegacao></BarraNavegacao>
 
     {/* banner */}
     <div className="container-fluid" 
@@ -128,8 +141,27 @@ export default function Home() {
                 Conheça profissionais de diferentes áreas de atuação.
             </p>
         </div>
+
+        {listaProfissionais.length > 0 ?
+            <section className={styles.carrossel}>
+              <div className={styles.trilho}>
+                  {listaProfissionais.map((profissional) => (
+                      <div key={profissional.id_profissional} className={styles.item}>
+                        <CardProfissional
+                          key={profissional.id_profissional}
+                          profissional={profissional}
+                        />
+                      </div>
+                  ))}
+                </div>
+            </section>
+            :
+            <div>
+                <h2>Nenhum profissional encontrado. Tente novamente mais tarde...</h2>
+            </div>
+        }
        
-        <CardProfissional />
+        {/* <CardProfissional /> */}
     
         
     </div>
@@ -158,6 +190,7 @@ export default function Home() {
                 color: "#2864e8",
               }}
             >
+              <img src="lupa.png" style={{height: "40px", width: "40px"}} />
               <i className="bi bi-search fs-2"></i>
             </div>
 
@@ -179,7 +212,7 @@ export default function Home() {
                 color: "#2864e8",
               }}
             >
-              <i className="bi bi-person-lines-fill fs-2"></i>
+              <img src="usuario_check.png" style={{height: "40px", width: "40px"}} />
             </div>
 
             <h5 className="fw-bold">2. Escolha o profissional</h5>
@@ -200,7 +233,7 @@ export default function Home() {
                 color: "#2864e8",
               }}
             >
-              <i className="bi bi-chat-dots fs-2"></i>
+              <img src="comentario.png" style={{height: "40px", width: "40px"}} />
             </div>
 
             <h5 className="fw-bold">3. Entre em contato</h5>
@@ -221,23 +254,15 @@ export default function Home() {
 
       {/* Texto principal */}
       <div className="col-12 col-lg-5">
-        <span className="text-primary fw-semibold small">
-          SUA BUSCA, MAIS SIMPLES
-        </span>
-
-        <h2
-          className="fw-bold mt-2 mb-3"
-          style={{ color: "#17356F" }}
-        >
+        <span className="text-primary fw-semibold small">SUA BUSCA, MAIS SIMPLES</span>
+        <h2 className="fw-bold mt-2 mb-3" style={{ color: "#17356F" }}>
           Encontre o profissional ideal sem complicação.
         </h2>
-
         <p className="text-secondary mb-4">
           O ConectaPro conecta você a profissionais de diferentes
           áreas, facilitando a busca por serviços para sua casa
           ou seu negócio.
         </p>
-
         <Link
           href="/profissionais"
           className="btn btn-primary px-4 py-3 fw-semibold"
@@ -326,8 +351,6 @@ export default function Home() {
     </div>
   </div>
 </section>
-
-  <Rodape></Rodape>
   </main>
     </>
   );

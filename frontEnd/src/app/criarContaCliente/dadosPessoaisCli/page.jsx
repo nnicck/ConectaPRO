@@ -11,9 +11,6 @@ export default function CadastroCliente() {
     return (
         <>
         <div className="d-flex flex-column min-vh-100">
-        <header>
-            <BarraNavegacao/>
-        </header>
             <main className="container flex-grow-1 py-5 mt-4">
               <div className="d-flex justify-content-center mb-5">
                   <EtapasContaCliente etapaAtiva={1}/>
@@ -144,7 +141,6 @@ export default function CadastroCliente() {
 
                 </div>
             </main>
-        <Rodape></Rodape>
         </div>
         </>
     );

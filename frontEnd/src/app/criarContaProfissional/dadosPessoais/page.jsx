@@ -94,10 +94,6 @@ export default function CadastroProfissional() {
 
     return (
         <div className="d-flex flex-column min-vh-100">
-            <header>
-                <BarraNavegacao/>
-            </header>
-
             <main className="container flex-grow-1 py-5 mt-2">
                 <div className="d-flex justify-content-center mb-5">
                     <EtapasContaProfissonal etapaAtiva={1} />
@@ -248,8 +244,6 @@ export default function CadastroProfissional() {
                     </div>
                 </div>
             </main>
-
-            <Rodape />
         </div>
     );
 }

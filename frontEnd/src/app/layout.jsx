@@ -19,13 +19,20 @@ const inter = Inter({
 
 export const metadata = {
   title: "ConectaPRO",
-  description: "ConectaPro é um site de contratação de profissionais autônomos que conecta clientes a prestadores de serviços de forma rápida, prática e segura. A plataforma permite buscar profissionais, visualizar perfis, contratar serviços, agendar atendimentos e acompanhar solicitações em um só lugar"
+  description: "ConectaPro é um site de contratação de profissionais autônomos que conecta clientes a prestadores de serviços de forma rápida, prática e segura. A plataforma permite buscar profissionais, visualizar perfis, contratar serviços, agendar atendimentos e acompanhar solicitações em um só lugar",
 };
+
+import BarraNavegacao from "@/components/BarraNavegacao";
+import Rodape from "@/components/Rodape";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br" className={`${inter.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${inter.variable}`}>
+      <body>
+        <BarraNavegacao botaoUm="Cadastre-se" botaoDois="Cadastre-se como profissional" botaoTres="Entrar"/>
+        {children}
+        <Rodape/>
+      </body>
     </html>
   );
 }

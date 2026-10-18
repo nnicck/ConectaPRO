@@ -9,10 +9,6 @@ import BotoesNavegacao from "@/components/BotoesNavegacao";
 export default function SegurancaProf() {
 return (
 <div className="d-flex flex-column min-vh-100">
-<header>
-<BarraNavegacao/>
-</header>
-
         <main className="container py-5 flex-grow-1">
             <div className="row justify-content-center mt-4">
                 <div className="col-12 col-lg-8">
@@ -77,8 +73,6 @@ return (
                 </div>
             </div>
         </main>
-
-        <Rodape />
     </div>
 );
 
