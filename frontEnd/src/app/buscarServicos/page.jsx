@@ -70,14 +70,10 @@ export default function BuscarProfissionais() {
     return (
         <>
         <div className="d-flex flex-column min-vh-100">
-            {/* Barra de navegação */}
-            <header>
-                <BarraNavegacao />
-            </header>
 
             {/* Banner de busca */}
             <section
-                className="container-fluid text-white py-4"
+                className="container-fluid text-white p-5"
                 style={{ backgroundColor: "#10182c" }}
             >
                 <div className="row align-items-center g-3 px-2 px-md-3">
@@ -167,9 +163,6 @@ export default function BuscarProfissionais() {
                     
                 </div>
             </main>
-
-            {/* Rodapé */}
-            <Rodape />
         </div>
         </>
     );

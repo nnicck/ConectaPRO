@@ -45,6 +45,7 @@ export function criarClienteService({ clienteModel }) {
             nome: cliente.nome,
             email: cliente.email,
             telefone: cliente.telefone,
+            localizacao: cliente.localizacao,
             senha: cliente.senha,
             foto: cliente.foto
         });
@@ -69,6 +70,7 @@ export function criarClienteService({ clienteModel }) {
             nome: cliente.nome,
             email: cliente.email,
             telefone: cliente.telefone,
+            localizacao: cliente.localizacao,
             senha: cliente.senha,
             foto: cliente.foto
         });

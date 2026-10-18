@@ -1,5 +1,5 @@
 export default class Cliente {
-    constructor({id_cliente, nome, email, telefone, senha, foto}){
+    constructor({id_cliente, nome, email, telefone, localizacao, senha, foto}){
         if(!Number.isInteger(id_cliente) || id_cliente <= 0){
             throw new TypeError("O número deve ser inteiro e positivo");
         }
@@ -28,6 +28,7 @@ export default class Cliente {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
+        this.localizacao = localizacao ?? null
         this.senha = senha;
         this.foto = foto ?? null;
     }
