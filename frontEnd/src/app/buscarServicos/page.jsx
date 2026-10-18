@@ -68,6 +68,7 @@ export default function BuscarProfissionais() {
     });
 
     return (
+        <>
         <div className="d-flex flex-column min-vh-100">
             {/* Barra de navegação */}
             <header>
@@ -170,5 +171,6 @@ export default function BuscarProfissionais() {
             {/* Rodapé */}
             <Rodape />
         </div>
+        </>
     );
 }

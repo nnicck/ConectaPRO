@@ -1,0 +1,85 @@
+.servico-container {
+  max-width: 950px;
+  padding: 24px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+}
+
+.img-principal {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.img-miniatura {
+  width: calc(33.333% - 6px);
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: 0.2s;
+}
+
+.img-miniatura:hover {
+  opacity: 1;
+}
+
+.miniatura-ativa {
+  opacity: 1;
+  outline: 2px solid #0d6efd;
+}
+
+.titulo-servico {
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.preco-servico {
+  font-size: 1.5rem;
+}
+
+.preco-servico strong {
+  margin-left: 8px;
+}
+
+.lista-beneficios {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-beneficios li {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.btn-orcamento {
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Celulares */
+@media (max-width: 767px) {
+  .servico-container {
+    padding: 16px;
+  }
+
+  .img-principal {
+    height: 240px;
+  }
+
+  .titulo-servico {
+    font-size: 1.4rem;
+  }
+
+  .preco-servico {
+    font-size: 1.3rem;
+  }
+
+  .img-miniatura {
+    height: 70px;
+  }
+}

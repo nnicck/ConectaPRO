@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import Link from "next/link";
 
 export default function CardProfissionalBusca() {
     return (
@@ -44,12 +45,7 @@ export default function CardProfissionalBusca() {
                                 A partir de R$ 120,00
                             </p>
 
-                            <a
-                                href="/perfil-profissional"
-                                className="btn btn-primary btn-sm mt-auto"
-                            >
-                                Saiba mais
-                            </a>
+                            <Link href={"detalhesServico"} className="btn btn-primary btn-sm mt-auto">Saiba mais</Link>
 
                         </div>
                     </div>
