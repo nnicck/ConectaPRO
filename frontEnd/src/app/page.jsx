@@ -1,11 +1,14 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+
+import styles from "./page.module.css";
+
 import BarraNavegacao from "@/components/BarraNavegacao";
 import CardServicos from "@/components/CardServicos";
 import Rodape from "@/components/Rodape";
 import CardProfissional from "@/components/CardProfissionais";
-
 
 const servicos = [
   {
@@ -45,6 +48,20 @@ const servicos = [
 ];
 
 export default function Home() {
+  const [ listaProfissionais, setListaProfissionais ] = useState([]);
+  const [ msgErro, setMsgErro ] = useState(""); 
+
+  useEffect(() => {
+      fetch("http://localhost:3001/api/profissional")
+      .then(res => res.json())
+          .then(data => {
+              console.log(data)
+              setListaProfissionais(data.dados);
+              setMsgErro("");
+          })
+      .catch(erro => setMsgErro(erro.message));
+  }, []);
+
   return (
     <>
     <main style={{backgroundColor: "#F8FAFC"}}>
@@ -128,8 +145,27 @@ export default function Home() {
                 Conheça profissionais de diferentes áreas de atuação.
             </p>
         </div>
+
+        {listaProfissionais.length > 0 ?
+            <section className={styles.carrossel}>
+              <div className={styles.trilho}>
+                  {listaProfissionais.map((profissional) => (
+                      <div key={profissional.id_profissional} className={styles.item}>
+                        <CardProfissional
+                          key={profissional.id_profissional}
+                          profissional={profissional}
+                        />
+                      </div>
+                  ))}
+                </div>
+            </section>
+            :
+            <div>
+                <h2>Nenhum profissional encontrado. Tente novamente mais tarde...</h2>
+            </div>
+        }
        
-        <CardProfissional />
+        {/* <CardProfissional /> */}
     
         
     </div>

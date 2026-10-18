@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { criarPool } from "./config/database.js";
 
 // Models
@@ -34,6 +35,9 @@ import { criarAvaliacaoRoutes } from "./routes/avaliacaoRoutes.js";
 import { criarContratoRoutes } from "./routes/contratoRoutes.js";
 
 export const app = express();
+
+// cors necessário pelo frontend e backend usarem portas diferentes
+app.use(cors({ origin: "http://localhost:3000" }));
 
 // middleware: "ensina" o express a ler json no corpo da requisição
 app.use(express.json());
