@@ -40,7 +40,7 @@ export default function Login() {
                 );
             }
 
-            window.location.href = "/";
+            window.location.href = "/inicioCliente";
         } catch (erro) {
             setErro(erro.message || "Erro ao conectar com o servidor.");
         } finally {
