@@ -2,14 +2,6 @@
   background-color: #CBD5E1;
 }
 
-.banner {
-    height: 650px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('/bgBanner.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
 .menu{
   background-color: white;
 }
@@ -33,56 +25,4 @@
 
 .btnEntrar:hover{
   background-color: #2a53aa;
-}
-
-.carrossel {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    padding: 20px 4px;
-}
-
-.trilho {
-    display: flex;
-    gap: 20px;
-    width: max-content;
-    animation: movimentoInfinito 20s linear infinite;
-}
-
-.item {
-    flex: 0 0 280px;
-    width: 280px;
-}
-
-@keyframes movimentoInfinito {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-30%);
-    }
-}
-
-@media (max-width: 576px) {
-    .item {
-        flex-basis: 250px;
-        width: 250px;
-    }
-
-    .trilho {
-        gap: 14px;
-        animation-duration: 45s;
-    }
-
-    .foto {
-        width: 50px;
-        height: 50px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .trilho {
-        animation: none;
-    }
 }
