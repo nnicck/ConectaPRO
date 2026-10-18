@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import session from "express-session";
 import { criarPool } from "./config/database.js";
 
 // Models
@@ -34,13 +35,31 @@ import { criarMidiaRoutes } from "./routes/midiaRoutes.js";
 import { criarAvaliacaoRoutes } from "./routes/avaliacaoRoutes.js";
 import { criarContratoRoutes } from "./routes/contratoRoutes.js";
 
+// Autenticar (service, controller e routes)
+import { criarAutenticarService } from "./services/AutenticarService.js";
+import { criarAutenticarController } from "./controllers/AutenticarController.js";
+import { criarAutenticarRoutes } from "./routes/AutenticarRoutes.js";
+
 export const app = express();
 
 // cors necessário pelo frontend e backend usarem portas diferentes
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 // middleware: "ensina" o express a ler json no corpo da requisição
 app.use(express.json());
+
+// habilitar sessão
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: false,
+        sameSite: "lax",
+        maxAge: 24 * 60 * 60 * 1000
+    }
+}));
 
 // Conexão com o banco de dados
 const pool = criarPool();
@@ -81,6 +100,11 @@ const contratoService = criarContratoService({ contratoModel });
 const contratoController = criarContratoController({ contratoService });
 const contratoRoutes = criarContratoRoutes({ contratoController });
 
+// ==================== AUTENTICAR ===================
+const autenticarService = criarAutenticarService({ clienteModel, profissionalModel });
+const autenticarController = criarAutenticarController({ autenticarService });
+const autenticarRoutes = criarAutenticarRoutes({ autenticarController });
+
 // Rota de teste do servidor
 app.get("/api/check", (req, res) => {
     res.status(200).json({
@@ -96,6 +120,7 @@ app.use("/api/servico", servicoRoutes);
 app.use("/api/midia", midiaRoutes);
 app.use("/api/avaliacao", avaliacaoRoutes);
 app.use("/api/contrato", contratoRoutes);
+app.use("/api/autenticar", autenticarRoutes);
 
 app.use((req, res) => {
     res.status(404).json({
