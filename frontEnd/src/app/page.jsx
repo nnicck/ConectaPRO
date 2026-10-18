@@ -5,9 +5,7 @@ import Link from "next/link";
 
 import styles from "./page.module.css";
 
-import BarraNavegacao from "@/components/BarraNavegacao";
 import CardServicos from "@/components/CardServicos";
-import Rodape from "@/components/Rodape";
 import CardProfissional from "@/components/CardProfissionais";
 
 const servicos = [
@@ -192,6 +190,7 @@ export default function Home() {
                 color: "#2864e8",
               }}
             >
+              <img src="lupa.png" style={{height: "40px", width: "40px"}} />
               <i className="bi bi-search fs-2"></i>
             </div>
 
@@ -213,7 +212,7 @@ export default function Home() {
                 color: "#2864e8",
               }}
             >
-              <i className="bi bi-person-lines-fill fs-2"></i>
+              <img src="usuario_check.png" style={{height: "40px", width: "40px"}} />
             </div>
 
             <h5 className="fw-bold">2. Escolha o profissional</h5>
@@ -234,7 +233,7 @@ export default function Home() {
                 color: "#2864e8",
               }}
             >
-              <i className="bi bi-chat-dots fs-2"></i>
+              <img src="comentario.png" style={{height: "40px", width: "40px"}} />
             </div>
 
             <h5 className="fw-bold">3. Entre em contato</h5>
@@ -255,23 +254,15 @@ export default function Home() {
 
       {/* Texto principal */}
       <div className="col-12 col-lg-5">
-        <span className="text-primary fw-semibold small">
-          SUA BUSCA, MAIS SIMPLES
-        </span>
-
-        <h2
-          className="fw-bold mt-2 mb-3"
-          style={{ color: "#17356F" }}
-        >
+        <span className="text-primary fw-semibold small">SUA BUSCA, MAIS SIMPLES</span>
+        <h2 className="fw-bold mt-2 mb-3" style={{ color: "#17356F" }}>
           Encontre o profissional ideal sem complicação.
         </h2>
-
         <p className="text-secondary mb-4">
           O ConectaPro conecta você a profissionais de diferentes
           áreas, facilitando a busca por serviços para sua casa
           ou seu negócio.
         </p>
-
         <Link
           href="/profissionais"
           className="btn btn-primary px-4 py-3 fw-semibold"
