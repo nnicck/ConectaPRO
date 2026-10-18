@@ -13,11 +13,7 @@ export default function LocalizacaoProfissional() {
         <>
         <div className="d-flex flex-column min-vh-100">
             <header>
-                <BarraNavegacao
-                    botaoUm="Cadastre-se"
-                    botaoDois="Cadastre-se como profissional"
-                    botaoTres="Entrar"
-                />
+                <BarraNavegacao/>
             </header>
 
 

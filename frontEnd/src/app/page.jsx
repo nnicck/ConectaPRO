@@ -49,7 +49,7 @@ export default function Home() {
     <>
     <main style={{backgroundColor: "#F8FAFC"}}>
 
-    <BarraNavegacao botaoUm="Cadastre-se" botaoDois="Cadastre-se como profissional" botaoTres="Entrar"></BarraNavegacao>
+    <BarraNavegacao></BarraNavegacao>
 
     {/* banner */}
     <div className="container-fluid" 

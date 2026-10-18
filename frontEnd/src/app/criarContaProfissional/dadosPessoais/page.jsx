@@ -95,11 +95,7 @@ export default function CadastroProfissional() {
     return (
         <div className="d-flex flex-column min-vh-100">
             <header>
-                <BarraNavegacao
-                    botaoUm="Cadastre-se"
-                    botaoDois="Cadastre-se como profissional"
-                    botaoTres="Entrar"
-                />
+                <BarraNavegacao/>
             </header>
 
             <main className="container flex-grow-1 py-5 mt-2">

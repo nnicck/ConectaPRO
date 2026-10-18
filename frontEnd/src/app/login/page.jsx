@@ -8,11 +8,7 @@ export default function Login() {
     return (
         <main style={{ backgroundColor: "#F8FAFC" }}>
 
-            <BarraNavegacao
-                botaoUm="Cadastre-se"
-                botaoDois="Cadastre-se como profissional"
-                botaoTres="Entrar"
-            />
+            <BarraNavegacao/>
 
             <section className="d-flex">
 

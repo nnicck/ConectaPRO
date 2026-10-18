@@ -10,11 +10,7 @@ export default function segurancaCli() {
 return (
 <div className="d-flex flex-column min-vh-100">
 <header>
-<BarraNavegacao
-                 botaoUm="Cadastre-se"
-                 botaoDois="Cadastre-se como profissional"
-                 botaoTres="Entrar"
-             />
+<BarraNavegacao/>
 </header>
 
         <main className="container py-5 flex-grow-1">
