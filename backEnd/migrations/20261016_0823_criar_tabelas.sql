@@ -1,3 +1,5 @@
+-- Crie as tabelas na ordem em que aparecem neste arquivo
+
 -- ==========================================  
 -- CLIENTES  
 -- ==========================================  
@@ -31,19 +33,6 @@ CREATE TABLE IF NOT EXISTS profissionais (
 );
 
 -- ==========================================  
--- MÍDIAS  
--- ==========================================  
-
-CREATE TABLE IF NOT EXISTS midias (  
-    id_midia INT PRIMARY KEY AUTO_INCREMENT,  
-    tipo VARCHAR(50) NOT NULL,  
-    midia VARCHAR(300) NOT NULL,  
-    id_servico INT NOT NULL,  
-    FOREIGN KEY (id_servico) 
-    REFERENCES servicos(id_servico)  
-);
-
--- ==========================================  
 -- SERVIÇOS  
 -- ==========================================  
  
@@ -59,6 +48,33 @@ CREATE TABLE IF NOT EXISTS servicos (
     id_profissional INT NOT NULL,  
     FOREIGN KEY (id_profissional)  
     REFERENCES profissionais(id_profissional)  
+);
+
+-- ==========================================  
+-- MÍDIAS  
+-- ==========================================  
+
+CREATE TABLE IF NOT EXISTS midias (  
+    id_midia INT PRIMARY KEY AUTO_INCREMENT,  
+    tipo VARCHAR(50) NOT NULL,  
+    midia VARCHAR(300) NOT NULL,  
+    id_servico INT NOT NULL,  
+    FOREIGN KEY (id_servico) 
+    REFERENCES servicos(id_servico)  
+);
+
+-- ==========================================  
+-- AVALIAÇÕES  
+-- ==========================================  
+
+CREATE TABLE IF NOT EXISTS avaliacoes (  
+    id_avaliacao INT PRIMARY KEY AUTO_INCREMENT,
+    estrelas FLOAT NOT NULL,
+    comentario VARCHAR(2000),
+    data_avaliacao DATE NOT NULL,
+    id_servico INT NOT NULL UNIQUE,
+    FOREIGN KEY (id_servico)
+    REFERENCES servicos(id_servico)
 );
 
 -- ==========================================  
@@ -81,18 +97,4 @@ CREATE TABLE IF NOT EXISTS contratos (
     REFERENCES profissionais(id_profissional),  
     FOREIGN KEY (id_servico)  
     REFERENCES servicos(id_servico)  
-);
-
--- ==========================================  
--- AVALIAÇÕES  
--- ==========================================  
-
-CREATE TABLE IF NOT EXISTS avaliacoes (  
-    id_avaliacao INT PRIMARY KEY AUTO_INCREMENT,
-    estrelas FLOAT NOT NULL,
-    comentario VARCHAR(2000),
-    data_avaliacao DATE NOT NULL,
-    id_servico INT NOT NULL UNIQUE,
-    FOREIGN KEY (id_servico)
-    REFERENCES servicos(id_servico)
 );
