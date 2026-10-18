@@ -1,6 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./detalhesServico.css";
+import "./detalhesServico.module.css";
 
 export default function detalhesServico() {
   const imagens = [
