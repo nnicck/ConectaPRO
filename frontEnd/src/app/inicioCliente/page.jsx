@@ -7,27 +7,6 @@ export default function InicioCliente() {
     const [carregando, setCarregando] = useState(true);
     const [listaContratos, setListaContratos] = useState([]);
 
-    // async function fazerLogout() {
-    //     try {
-    //         const resposta = await fetch(
-    //             "http://localhost:3001/api/autenticar/logout",
-    //             {
-    //                 method: "POST",
-    //                 credentials: "include"
-    //             }
-    //         );
-
-    //         if (!resposta.ok) {
-    //             throw new Error("Não foi possível sair da conta.");
-    //         }
-
-    //         window.location.href = "/login";
-    //     } catch (erro) {
-    //         console.error(erro);
-    //         alert(erro.message);
-    //     }
-    // }
-
     useEffect(() => {
         async function carregarDados() {
             try {
