@@ -65,5 +65,17 @@ export function criarAvaliacaoModel({ pool }) {
         return { ...avaliacao, id_avaliacao: Number(id) };
     }
 
-    return { listarTodos, buscarPorId, criar, deletarPorId, atualizar };
+    async function listarPorProfissional(id) {
+        const sql = `
+            SELECT avaliacoes.*, servicos.titulo
+            FROM avaliacoes
+            JOIN servicos ON avaliacoes.id_servico = servicos.id_servico
+            WHERE servicos.id_profissional = ?
+        `;
+
+        const [linhas] = await pool.query(sql, [id]);
+        return linhas;
+    }
+
+    return { listarTodos, buscarPorId, criar, deletarPorId, atualizar, listarPorProfissional };
 }
