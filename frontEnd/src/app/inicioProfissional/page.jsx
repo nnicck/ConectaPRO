@@ -84,21 +84,43 @@ export default function inicioProfissional() {
 
                 const resultadoServicos = await respostaServicos.json();
 
-                // Adiciona o preço de cada serviço ao contrato
-                const contratosComPreco = contratosProfissional.map(contrato => {
+                // Busca os clientes
+                const respostaClientes = await fetch(
+                    "http://localhost:3001/api/cliente",
+                    { credentials: "include" }
+                );
+
+                if (!respostaClientes.ok) {
+                    throw new Error("Não foi possível carregar os clientes.");
+                }
+
+                const resultadoClientes = await respostaClientes.json();
+
+                // Relaciona cada contrato ao serviço e ao cliente
+                const contratosComDados = contratosProfissional.map(contrato => {
                     const servico = resultadoServicos.dados.find(
-                        servico =>
-                            Number(servico.id_servico) ===
+                        item =>
+                            Number(item.id_servico) ===
                             Number(contrato.id_servico)
+                    );
+
+                    const cliente = resultadoClientes.dados.find(
+                        item =>
+                            Number(item.id_cliente) ===
+                            Number(contrato.id_cliente)
                     );
 
                     return {
                         ...contrato,
-                        preco: servico ? servico.preco : 0
+                        nome_servico:
+                            servico?.nome_servico || "Serviço não encontrado",
+                        nome_cliente:
+                            cliente?.nome || "Cliente não encontrado",
+                        preco: Number(servico?.preco || 0)
                     };
                 });
 
-                setContratos(contratosComPreco);
+                setContratos(contratosComDados);
 
             } catch (erro) {
                 console.error("Erro ao carregar profissional:", erro);
@@ -161,6 +183,64 @@ export default function inicioProfissional() {
                     <CardsDashboard titCardDashboard="Ganho no mês" numDashboard={valor}></CardsDashboard>
                 </div>
             </div>
+
+            <div className="mt-5">
+                <h3>Meus serviços</h3>
+                <p>Vejas seus serviços em andamento e histórico</p>
+                <div className="table-responsive mt-4">
+                <table className="table align-middle">
+                    <thead>
+                        <tr>
+                            <th>Serviço</th>
+                            <th>Cliente</th>
+                            <th>Data de conclusão</th>
+                            <th>Status</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {contratosConcluidos.length > 0 ? (
+                            contratosConcluidos.map(contrato => (
+                                <tr key={contrato.id_contrato}>
+                                    <td>{contrato.observacao}</td>
+
+                                    <td>{contrato.nome_cliente}</td>
+
+                                    <td>
+                                        {contrato.data_conclusao
+                                        ? new Date(contrato.data_conclusao).toLocaleDateString("pt-BR", {
+                                            timeZone: "UTC"
+                                        })
+                                        : "-"}
+                                    </td>
+
+                                    <td>
+                                        <span className="badge bg-success">
+                                            {contrato.status}
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        {Number(contrato.preco).toLocaleString("pt-BR", {
+                                            style: "currency",
+                                            currency: "BRL"
+                                        })}
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="5" className="text-center">
+                                    Nenhum serviço concluído.
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
+
+                </div>
         </div>
         </main>
         </>
