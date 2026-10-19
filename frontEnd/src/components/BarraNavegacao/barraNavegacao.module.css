@@ -21,3 +21,16 @@
     background-color: #2563eb;
     color: #ffffff;
 }
+
+.btnSair {
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.btnSair:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}

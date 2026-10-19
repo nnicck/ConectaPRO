@@ -161,19 +161,8 @@ export default function inicioProfissional() {
                     <CardsDashboard titCardDashboard="Ganho no mês" numDashboard={valor}></CardsDashboard>
                 </div>
             </div>
-
-
-
-
         </div>
-
-
-
-
-
         </main>
-        
-        
         </>
     )
 }

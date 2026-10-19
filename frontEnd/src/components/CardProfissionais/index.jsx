@@ -39,7 +39,7 @@ export default function CardProfissional({ profissional }) {
                 </div>
 
                 <Link
-                    href={`/profissional/${profissional.id_profissional}`}
+                    href={`/perfilProfissional/${profissional.id_profissional}`}
                     className={`btn btn-outline-primary btn-sm w-100 mt-3 ${styles.botao}`}
                 >
                     Ver perfil
