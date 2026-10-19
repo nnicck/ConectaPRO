@@ -7,20 +7,21 @@ import { useEffect, useState } from "react";
 //UseState - Para Mostrar as informações na tela
 
 export default function inicioProfissional(){
-     const [contratos, setContratos] = useState([]);
+    const [contratos, setContratos] = useState([]);
 
     useEffect(()=>{
         async function qtdContratos() {
             try{
                 const resposta = await fetch(
-                    "http://localhost:3001/api/contrato"
+                    "http://localhost:3001/api/contrato",
+                    { credentials: "include" }
                 );
             
             if(!resposta.ok){
                 throw new Error("Erro ao buscar quantidades de contratos");
             }
-            const dados = await resposta.json();
-            setContratos (dados); //
+            const resultado = await resposta.json();
+            setContratos (resultado.dados);
 
             } catch(erro){
                 console.error(erro);
@@ -29,7 +30,6 @@ export default function inicioProfissional(){
 
         qtdContratos();
     }, []);
-
 
     return(
         <>
@@ -54,19 +54,8 @@ export default function inicioProfissional(){
                     <CardsDashboard titCardDashboard="Serviços Solicitados" numDashboard="1"></CardsDashboard>
                 </div>
             </div>
-
-
-
-
         </div>
-
-
-
-
-
         </main>
-        
-        
         </>
     )
 }
