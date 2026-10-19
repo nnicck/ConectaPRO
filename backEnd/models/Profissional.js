@@ -28,9 +28,9 @@ export default class Profissional {
             throw new TypeError("Profissão é obrigatória");
         }
 
-        if(typeof data_ingresso !== "string" || data_ingresso.trim() === ""){
-            throw new TypeError("Data de ingresso é obrigatória");
-        }
+        // if(typeof data_ingresso !== "string" || data_ingresso.trim() === ""){
+        //     throw new TypeError("Data de ingresso é obrigatória");
+        // }
 
         if (!Number.isFinite(Number(saldo)) || Number(saldo) < 0){
             throw new TypeError("Saldo deve ser um número maior ou igual a zero");
@@ -47,7 +47,7 @@ export default class Profissional {
         this.profissao = profissao;
         this.visao_geral = visao_geral ?? null;
         this.idioma = idioma ?? null;
-        this.data_ingresso = data_ingresso;
+        this.data_ingresso = data_ingresso ?? null;
         this.saldo = saldo;
     }
 }
