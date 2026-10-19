@@ -17,15 +17,11 @@ style={{ width: "250px", minHeight: "100vh" }}>
             <div>Nicole</div>
         </div>
 
-        <Link href="/estoque" className="text-white text-decoration-none p-2 ">
+        <Link href="/inicioProfissional" className="text-white text-decoration-none p-2 ">
             Inicio
         </Link>
 
-        <Link href="/cadastro" className="text-white text-decoration-none p-2">
-            Meus Serviços
-        </Link>
-
-        <Link href="/financeiro" className="text-white text-decoration-none p-2">
+        <Link href="/inicioProfissional/solicitacoesProfissional" className="text-white text-decoration-none p-2">
             Solicitações
         </Link>
 
