@@ -18,15 +18,15 @@ style={{ width: "250px", minHeight: "100vh" }}>
         </div>
 
         <Link href="/estoque" className="text-white text-decoration-none p-2 ">
-            Estoque
+            Inicio
         </Link>
 
         <Link href="/cadastro" className="text-white text-decoration-none p-2">
-            Cadastro
+            Meus Serviços
         </Link>
 
         <Link href="/financeiro" className="text-white text-decoration-none p-2">
-            Financeiro
+            Solicitações
         </Link>
 
         <Link href="/dashboard" className="text-white text-decoration-none p-2">
