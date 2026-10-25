@@ -1,0 +1,260 @@
+*{
+    margin: 0;
+    padding: 0;
+    border:0;
+}
+
+/* TOPBAR */
+.topbar {
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.logo-conectapro {
+    width: 195px;
+    height: auto;
+    object-fit: contain;
+}
+
+.topbar .nav-link {
+    color: #12375b;
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.topbar .nav-link:hover {
+    color: #2563eb;
+}
+
+.link-cadastro {
+    padding: 12px 18px !important;
+    border: 1px solid #edf0f5;
+    border-radius: 10px;
+}
+
+.botao-entrar {
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #2864ed;
+    border-color: #2864ed;
+    border-radius: 9px;
+}
+
+/* BANNER */
+.banner-principal {
+    min-height: 660px;
+    position: relative;
+    overflow: hidden;
+    background-color: #031b48;
+
+    /* Imagem de fundo do banner */
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(1, 18, 49, 0.25),
+            rgba(0, 31, 86, 0.05)
+        ),
+        url("../imagens/banner-profissional.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.banner-conteudo {
+    min-height: 660px;
+    position: relative;
+    z-index: 1;
+}
+
+.banner-texto {
+    color: #ffffff;
+    padding-top: 25px;
+    padding-bottom: 35px;
+}
+
+.banner-texto h1 {
+    font-size: clamp(32px, 3vw, 48px);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.descricao-banner {
+    max-width: 700px;
+    font-size: 20px;
+    line-height: 1.55;
+}
+
+.formulario-busca {
+    max-width: 760px;
+}
+
+.formulario-busca .form-control {
+    min-width: 0;
+    height: 57px;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.formulario-busca .btn {
+    min-height: 57px;
+    font-weight: 600;
+    border-radius: 4px;
+    white-space: nowrap;
+    background-color: #0866f5;
+    border-color: #0866f5;
+}
+
+/*banner com foto*/
+
+.banner-principal {
+    background-image: url("../img/bgBanner.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px;
+}
+
+.banner-conteudo {
+    min-height: 500px;
+}
+
+.banner-texto {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/*profissional*/
+
+/* Seção de profissionais */
+.profissionais-destaque {
+    background-color: #f8fafc;
+    overflow: hidden;
+}
+
+/* Cards */
+.profissional-card {
+    padding: 22px 18px;
+    border: 1px solid #dbeafe;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.profissional-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.14);
+}
+
+/* Animação do carrossel */
+#carrosselProfissionais .carousel-item {
+    transition: transform 0.8s ease-in-out;
+}
+
+/* Foto */
+.profissional-foto {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+}
+
+/* Informações */
+.profissional-info {
+    min-width: 0;
+}
+
+.profissional-info h5 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    overflow-wrap: anywhere;
+}
+
+.profissional-profissao {
+    color: #2563eb;
+    overflow-wrap: anywhere;
+}
+
+.profissional-local {
+    color: #7b8491;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+/* Descrição */
+.profissional-descricao {
+    color: #64748b;
+    font-size: 14px;
+    margin: 20px 0;
+    overflow-wrap: anywhere;
+}
+
+/* Botão */
+.profissional-card .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    border-width: 1px;
+    padding: 8px;
+}
+
+/*Como funciona?*/
+
+.como-funciona {
+    background-color: #fff;
+    padding-top: 85px !important;
+    padding-bottom: 100px !important;
+}
+
+.titulo-funcionamento {
+    color: #171717;
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+.descricao-funcionamento {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.etapa-funcionamento {
+    padding: 20px 12px;
+}
+
+.icone-funcionamento {
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    background-color: #e8efff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 22px;
+    font-size: 38px;
+    color: #000;
+}
+
+.etapa-funcionamento h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #171717;
+    margin-bottom: 12px;
+}
+
+.etapa-funcionamento p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #64748b;
+    margin-bottom: 0;
+}
