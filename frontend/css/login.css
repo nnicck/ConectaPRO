@@ -1,0 +1,198 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #0f172a;
+    font-size: 13px;
+}
+
+.login-container {
+    display: flex;
+    min-height: calc(100vh - 80px);
+}
+
+.side-banner {
+    width: 50%;
+    padding: 35px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.side-banner h1 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.side-banner h2 {
+    width: 95%;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.side-banner p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.login-form {
+    width: 50%;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8fafc;
+}
+
+.formulario {
+    width: 100%;
+    max-width: 370px;
+}
+
+.formulario h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.formulario .text-center {
+    margin-bottom: 25px !important;
+}
+
+.subtitulo {
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+.tipo-usuario {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px !important;
+}
+
+.btn-tipo {
+    width: 50%;
+    padding: 9px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #fff;
+    color: #334155;
+    font-size: 13px;
+}
+
+.btn-tipo:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.btn-tipo.selecionado {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #fff;
+}
+
+.formulario .form-label {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.formulario .mb-4 {
+    margin-bottom: 14px !important;
+}
+
+.formulario .form-control,
+.formulario .form-control-lg {
+    min-height: 38px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    border-color: #cbd5e1;
+}
+
+.formulario .form-control:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+.link-cadastro {
+    font-size: 12px;
+    margin-bottom: 20px !important;
+}
+
+.link-cadastro a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.link-cadastro a:hover {
+    text-decoration: underline;
+}
+
+.btn-acessar {
+    width: 100%;
+    padding: 9px;
+    background: #2563eb;
+    border: 1px solid #2563eb;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-acessar:hover {
+    background: #1d4ed8;
+    color: #fff;
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .side-banner,
+    .login-form {
+        width: 100%;
+    }
+
+    .side-banner {
+        padding: 25px 20px;
+        gap: 18px;
+    }
+
+    .side-banner h1 {
+        font-size: 22px;
+    }
+
+    .side-banner h2 {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .side-banner p {
+        font-size: 12px;
+    }
+
+    .login-form {
+        padding: 25px 20px;
+    }
+
+    .formulario {
+        max-width: 100%;
+    }
+
+    .formulario h2 {
+        font-size: 22px;
+    }
+}
