@@ -1,5 +1,8 @@
 import Contrato from "../models/Contrato.js";
 
+// Nestes status o serviço não pode mais ser cancelado
+const STATUS_NAO_CANCELAVEIS = ["concluído", "cancelado"];
+
 export function criarContratoService({ contratoModel }) {
     async function listar() {
         return contratoModel.listarTodos();
@@ -80,5 +83,53 @@ export function criarContratoService({ contratoModel }) {
         });
     }
 
-    return { listar, buscarPorId, criar, deletarPorId, atualizar };
+    // Só o cliente dono do contrato pode ver o acompanhamento
+    async function buscarAcompanhamento(idRecebido, usuario) {
+        const id = Number(idRecebido);
+
+        if (!Number.isInteger(id) || id <= 0) {
+            throw new Error("ID deve ser um número inteiro positivo");
+        }
+
+        const acompanhamento = await contratoModel.buscarAcompanhamento(id);
+
+        if (!acompanhamento) {
+            throw new Error(`Contrato ${id} não encontrado`);
+        }
+
+        if (usuario?.tipo !== "cliente" || acompanhamento.id_cliente !== usuario.id) {
+            throw new Error("Acesso negado: este contrato não pertence a você");
+        }
+
+        return acompanhamento;
+    }
+
+    // Cancelar não apaga nada: só muda o status para "cancelado"
+    async function cancelar(idRecebido, usuario) {
+        const id = Number(idRecebido);
+
+        if (!Number.isInteger(id) || id <= 0) {
+            throw new Error("ID deve ser um número inteiro positivo");
+        }
+
+        const contrato = await contratoModel.buscarPorId(id);
+
+        if (!contrato) {
+            throw new Error(`Contrato ${id} não encontrado`);
+        }
+
+        if (usuario?.tipo !== "cliente" || contrato.id_cliente !== usuario.id) {
+            throw new Error("Acesso negado: este contrato não pertence a você");
+        }
+
+        if (STATUS_NAO_CANCELAVEIS.includes(contrato.status)) {
+            throw new Error(`Não é possível cancelar um serviço ${contrato.status}`);
+        }
+
+        await contratoModel.atualizarStatus(id, "cancelado");
+
+        return { ...contrato, status: "cancelado" };
+    }
+
+    return { listar, buscarPorId, criar, deletarPorId, atualizar, buscarAcompanhamento, cancelar };
 }
