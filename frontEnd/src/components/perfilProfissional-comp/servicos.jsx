@@ -1,23 +1,28 @@
-export default function Servicos({ listaServicos }) {
+export default function Servicos() {
   return (
     <section id="servico">
       <h3 className="mb-3">Serviços Oferecidos</h3>
+
       <div className="row g-3">
-        {listaServicos.length > 0 ? listaServicos.map((servico) => (
-          <div className="col-12 col-sm-6 col-lg-4" key={servico.id_servico}>
-            <div className="card h-100">
-              <div className="card-body d-flex flex-column">
-                <span className="badge text-bg-primary align-self-start mb-2">{servico.categoria}</span>
-                <h5 className="card-title">{servico.titulo}</h5>
-                <p className="text-muted mb-2">{servico.tipo_servico}</p>
-                <p className="card-text">{servico.descricao}</p>
-                <p><strong>Tempo:</strong> {servico.tempo_prestacao || "A combinar"}</p>
-                <h5 className="mt-auto mb-3">{Number(servico.preco).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</h5>
-                <a href={`/servico/${servico.id_servico}`} className="btn btn-primary">Ver serviço</a>
-              </div>
+        <div className="col-12 col-sm-6 col-lg-4">
+          <div className="card h-100">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCbtju-IsYR6EJzMXOW5Tbsz1L1GjVXwwVI7oh7a3QwQ&s=10"
+              className="card-img-top imagem-servico"
+              alt="Serviço oferecido"
+            />
+
+            <div className="card-body">
+              <h5 className="card-title">
+                Reboco de parede para comer
+              </h5>
+
+              <a href="#" className="btn btn-primary">
+                Ver serviço
+              </a>
             </div>
           </div>
-        )) : <p>Este profissional ainda não cadastrou serviços.</p>}
+        </div>
       </div>
     </section>
   );

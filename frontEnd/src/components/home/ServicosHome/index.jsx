@@ -51,7 +51,6 @@ export default function ServicosHome(){
                         lugarCardServico={servico.lugar}
                         menorDescCardServico={servico.menorDescricao}
                         precoCardServico={servico.preco}
-                        linkCardServico={`/buscarServicos?termo=${encodeURIComponent(servico.titulo)}`}
                     />
                     </div>
                 ))}

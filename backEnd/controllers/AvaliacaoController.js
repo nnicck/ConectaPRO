@@ -86,14 +86,5 @@ export function criarAvaliacaoController({ avaliacaoService }) {
         }
     }
 
-    async function listarPorProfissional(req, res, next) {
-        try {
-            const avaliacoes = await avaliacaoService.listarPorProfissional(req.params.id);
-            res.status(200).json({ sucesso: true, dados: avaliacoes });
-        } catch (erro) {
-            next(erro);
-        }
-    }
-
-    return { listar, buscar, criar, deletar, atualizar, listarPorProfissional };
+    return { listar, buscar, criar, deletar, atualizar };
 }

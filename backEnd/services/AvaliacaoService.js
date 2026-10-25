@@ -72,9 +72,5 @@ export function criarAvaliacaoService({ avaliacaoModel }) {
         });
     }
 
-    async function listarPorProfissional(id) {
-        return await avaliacaoModel.listarPorProfissional(id);
-    }
-
-    return { listar, buscarPorId, criar, deletarPorId, atualizar, listarPorProfissional };
+    return { listar, buscarPorId, criar, deletarPorId, atualizar };
 }

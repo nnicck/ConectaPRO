@@ -80,54 +80,5 @@ export function criarServicoService({ servicoModel }) {
         });
     }
 
-    // Aceita valor único ou lista (?categoria=A&categoria=B) e devolve sempre uma lista de textos
-    function paraLista(valor) {
-        if (valor === undefined || valor === null || valor === "") {
-            return [];
-        }
-
-        return (Array.isArray(valor) ? valor : [valor])
-            .map(item => String(item).trim())
-            .filter(item => item !== "");
-    }
-
-    // Converte "50-100" em { min: 50, max: 100 } e "100-" em { min: 100, max: null }
-    function lerFaixa(texto) {
-        const partes = texto.split("-");
-
-        if (partes.length !== 2) {
-            throw new TypeError(`Faixa de preço inválida: ${texto}`);
-        }
-
-        const min = Number(partes[0]);
-        const max = partes[1] === "" ? null : Number(partes[1]);
-
-        if (!Number.isFinite(min) || min < 0 || (max !== null && (!Number.isFinite(max) || max < min))) {
-            throw new TypeError(`Faixa de preço inválida: ${texto}`);
-        }
-
-        return { min, max };
-    }
-
-    async function pesquisar(consulta = {}) {
-        const termo = paraLista(consulta.termo)[0] ?? "";
-        const localizacao = paraLista(consulta.localizacao)[0] ?? "";
-
-        if (termo.length > 100 || localizacao.length > 100) {
-            throw new TypeError("Termo e localização devem ter no máximo 100 caracteres");
-        }
-
-        return servicoModel.pesquisar({
-            termo,
-            localizacao,
-            categorias: paraLista(consulta.categoria),
-            faixas: paraLista(consulta.faixa).map(lerFaixa)
-        });
-    }
-
-    async function listarCategorias() {
-        return servicoModel.listarCategorias();
-    }
-
-    return { listar, buscarPorId, criar, deletarPorId, atualizar, pesquisar, listarCategorias };
+    return { listar, buscarPorId, criar, deletarPorId, atualizar };
 }

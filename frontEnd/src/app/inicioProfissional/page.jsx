@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 //UseEffect - Quando a tela atualizar vai pegar as informações
 //UseState - Para Mostrar as informações na tela
 
-export default function InicioProfissional() {
+export default function inicioProfissional() {
     const [contratos, setContratos] = useState([]);
     const [usuario, setUsuario] = useState(null);
     const [carregando, setCarregando] = useState(true);

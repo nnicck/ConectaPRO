@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 export default function InicioCliente() {
     const [usuario, setUsuario] = useState(null);
@@ -104,7 +103,7 @@ export default function InicioCliente() {
                 <h1>Serviços solicitados</h1>
                 <div className="d-flex flex-wrap gap-4">
                     {listaContratos.map(contrato => (
-                        <Link key={contrato.id_contrato} href={`/acompanharServico/${contrato.id_contrato}`} className="d-block text-decoration-none text-reset border border-1 border-dark rounded-5 overflow-hidden" style={{ width: "250px", minHeight: "250px" }}
+                        <div key={contrato.id_contrato} className="border border-1 border-dark rounded-5 overflow-hidden" style={{ width: "250px", minHeight: "250px" }}
                         >
                             <img src={contrato.foto ?? "imagem.png"} className="w-100 object-fit-contain" style={{ height: "160px" }}/>
                             <div className="p-3 border-top border-2 border-dark">
@@ -114,7 +113,7 @@ export default function InicioCliente() {
                                     Data: {new Date(contrato.data_contrato).toLocaleDateString("pt-BR", { timeZone: "UTC"})}
                                 </p>
                             </div>
-                        </Link>
+                        </div>
                     ))}
 
                     {listaContratos.length === 0 && (

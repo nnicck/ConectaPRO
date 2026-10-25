@@ -1,13 +1,10 @@
-import Link from "next/link";
-
 export default function CardServicos({
     imgCardServico,
     titleCardServico,
     descCardServico,
     lugarCardServico,
     menorDescCardServico,
-    precoCardServico,
-    linkCardServico = "/buscarServicos"
+    precoCardServico
 }) {
     return (
         <div className="card h-100 rounded-2 w-100">
@@ -50,9 +47,9 @@ export default function CardServicos({
                     </span>
                 </p>
 
-                <Link href={linkCardServico} className="btn btn-primary w-100 mt-auto">
+                <button className="btn btn-primary w-100 mt-auto">
                     Ver profissionais
-                </Link>
+                </button>
 
             </div>
 
