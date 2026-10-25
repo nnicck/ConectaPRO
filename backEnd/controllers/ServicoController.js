@@ -86,5 +86,27 @@ export function criarServicoController({ servicoService }) {
         }
     }
 
-    return { listar, buscar, criar, deletar, atualizar };
+    async function pesquisar(req, res, next) {
+        try {
+            const servicos = await servicoService.pesquisar(req.query);
+            res.status(200).json({ sucesso: true, dados: servicos });
+        } catch (erro) {
+            if (erro instanceof TypeError) {
+                return res.status(400).json({ sucesso: false, erro: erro.message });
+            }
+
+            next(erro);
+        }
+    }
+
+    async function listarCategorias(req, res, next) {
+        try {
+            const categorias = await servicoService.listarCategorias();
+            res.status(200).json({ sucesso: true, dados: categorias });
+        } catch (erro) {
+            next(erro);
+        }
+    }
+
+    return { listar, buscar, criar, deletar, atualizar, pesquisar, listarCategorias };
 }
