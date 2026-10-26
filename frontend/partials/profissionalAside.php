@@ -19,16 +19,12 @@
                 Início
             </a>
 
-            <a href="meusServicos.php">
+            <a href="../meusServicos.php">
                 Meus serviços
             </a>
 
-            <a href="solicitacoes.php">
+            <a href="../solicitacoes.php">
                 Solicitações
-            </a>
-
-            <a href="agendaFinanceiro.php">
-                Agenda/Financeiro
             </a>
 
             <a href="editarPerfil.php">

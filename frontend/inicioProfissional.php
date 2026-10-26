@@ -366,56 +366,7 @@ $proximosServicos = array_slice($proximosServicos, 0, 3);
         </section>
 
         <!-- CARTÕES DE RESUMO -->
-        <section class="resumos">
-
-            <article class="card-resumo">
-                <div class="titulo-card">Serviços solicitados</div>
-
-                <div class="numero-card">
-                    <?= $totalSolicitados ?>
-                </div>
-
-                <a href="solicitacoes.php" class="link-card">
-                    Ver solicitações
-                    <i class="bi bi-chevron-right"></i>
-                </a>
-            </article>
-
-            <article class="card-resumo">
-                <div class="titulo-card">Serviços pendentes</div>
-
-                <div class="numero-card">
-                    <?= $totalPendentes ?>
-                </div>
-
-                <a href="solicitacoes.php" class="link-card">
-                    Ver pendências
-                    <i class="bi bi-chevron-right"></i>
-                </a>
-            </article>
-
-            <article class="card-resumo">
-                <div class="titulo-card">Serviços concluídos</div>
-
-                <div class="numero-card">
-                    <?= $totalConcluidos ?>
-                </div>
-
-                <a href="solicitacoes.php" class="link-card">
-                    Ver histórico
-                    <i class="bi bi-chevron-right"></i>
-                </a>
-            </article>
-
-            <article class="card-resumo">
-                <div class="titulo-card">Saldo disponível</div>
-
-                <div class="numero-card">
-                    <?= escapar(formatarPreco($saldo)) ?>
-                </div>
-            </article>
-
-        </section>
+        <?php include './partials/cartoesResumoProf.php' ?> 
 
         <!-- ATIVIDADES E PRÓXIMOS SERVIÇOS -->
         <section class="painel-inferior">
