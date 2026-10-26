@@ -11,14 +11,13 @@
                     pedreiros e diversos autônomos verificados,
                     com praticidade e segurança.
                 </p>
-                <form action="servicos.php" method="GET" class="formulario-busca d-flex gap-3">
+                <form action="buscarServicos.php" method="GET" class="formulario-busca d-flex gap-3">
                     <input
                         type="text"
                         name="pesquisa"
                         class="form-control"
                         placeholder="O que você precisa?"
                         aria-label="Qual serviço você precisa?"
-                        required
                     >
                     <button type="submit" class="btn btn-primary px-4">
                         Buscar

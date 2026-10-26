@@ -203,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <p class="mb-4">
                 Ainda não tem uma conta?
-                <a href="cadastro.php">Cadastre-se</a>
+                <a href="cadastroCliente.php">Cadastre-se</a>
             </p>
 
             <?php if ($erro !== ""): ?>
