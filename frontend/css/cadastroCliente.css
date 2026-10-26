@@ -1,0 +1,65 @@
+.cadastro-cliente {
+    color: #0F172A;
+}
+
+.cadastro-container {
+    max-width: 850px;
+    width: 100%;
+}
+
+.cadastro-cliente form {
+    border-color: #DEE2E6 !important;
+}
+
+.cadastro-cliente .foto-preview {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.cadastro-cliente .foto-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cadastro-cliente .form-control {
+    min-height: 44px;
+}
+
+.cadastro-cliente .form-control:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 0.2rem rgb(37 99 235 / 15%);
+}
+
+.cadastro-cliente hr {
+    margin: 1.5rem 0;
+    opacity: 0.15;
+}
+
+.cadastro-cliente .btn-primary {
+    background-color: #2563EB;
+    border-color: #2563EB;
+}
+
+.cadastro-cliente .btn-primary:hover {
+    background-color: #1D4ED8;
+    border-color: #1D4ED8;
+}
+
+.cadastro-cliente .btn:focus-visible,
+.cadastro-cliente label:focus-visible {
+    outline: 3px solid #93C5FD;
+    outline-offset: 3px;
+}
+
+@media (max-width: 576px) {
+    .cadastro-cliente {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    .cadastro-cliente form {
+        padding: 1.25rem !important;
+    }
+}

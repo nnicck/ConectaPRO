@@ -14,10 +14,10 @@
             <!-- Links -->
             <div class="collapse navbar-collapse" id="menuNavegacao">
                 <div class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
-                    <a class="nav-link btn link-cadastro" href="cadastro.php">
+                    <a class="nav-link btn link-cadastro" href="cadastroCliente.php">
                         Cadastre-se
                     </a>
-                    <a class="nav-link btn link-cadastro" href="cadastro-profissional.php">
+                    <a class="nav-link btn link-cadastro" href="cadastroProfissional.php">
                         Cadastre-se como profissional
                     </a>
                     <a class="btn btn-primary px-4 py-2 botao-entrar" href="login.php">
