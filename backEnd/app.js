@@ -43,7 +43,7 @@ import { criarAutenticarRoutes } from "./routes/AutenticarRoutes.js";
 export const app = express();
 
 // cors necessário pelo frontend e backend usarem portas diferentes
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: "http://localhost", credentials: true }));
 
 // middleware: "ensina" o express a ler json no corpo da requisição
 app.use(express.json());
