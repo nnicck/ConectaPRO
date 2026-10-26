@@ -3,13 +3,6 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #0f172a;
-    font-size: 13px;
-}
-
 .login-container {
     display: flex;
     min-height: calc(100vh - 80px);
@@ -17,37 +10,37 @@ body {
 
 .side-banner {
     width: 50%;
-    padding: 35px;
+    padding: 50px;
     background: linear-gradient(135deg, #2563eb, #7c3aed);
     color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 18px;
+    gap: 25px;
 }
 
 .side-banner h1 {
-    font-size: 25px;
+    font-size: 34px;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
 }
 
 .side-banner h2 {
     width: 95%;
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 600;
-    line-height: 1.35;
+    line-height: 1.4;
 }
 
 .side-banner p {
-    font-size: 12px;
-    line-height: 1.5;
-    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 8px;
 }
 
 .login-form {
     width: 50%;
-    padding: 25px;
+    padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,39 +49,40 @@ body {
 
 .formulario {
     width: 100%;
-    max-width: 370px;
+    max-width: 470px;
 }
 
 .formulario h2 {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .formulario .text-center {
-    margin-bottom: 25px !important;
+    margin-bottom: 35px !important;
 }
 
 .subtitulo {
     color: #64748b;
-    font-size: 13px;
+    font-size: 17px;
     margin-bottom: 0;
 }
 
 .tipo-usuario {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px !important;
+    gap: 16px;
+    margin-bottom: 28px !important;
 }
 
 .btn-tipo {
     width: 50%;
-    padding: 9px;
+    padding: 15px;
     border: 1px solid #cbd5e1;
-    border-radius: 5px;
+    border-radius: 6px;
     background: #fff;
     color: #334155;
-    font-size: 13px;
+    font-size: 17px;
+    transition: 0.2s;
 }
 
 .btn-tipo:hover {
@@ -103,31 +97,31 @@ body {
 }
 
 .formulario .form-label {
-    font-size: 13px;
-    margin-bottom: 4px;
+    font-size: 16px;
+    margin-bottom: 7px;
 }
 
 .formulario .mb-4 {
-    margin-bottom: 14px !important;
+    margin-bottom: 22px !important;
 }
 
 .formulario .form-control,
 .formulario .form-control-lg {
-    min-height: 38px;
-    padding: 8px 10px;
-    border-radius: 5px;
-    font-size: 13px;
+    min-height: 50px;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 16px;
     border-color: #cbd5e1;
 }
 
 .formulario .form-control:focus {
     border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .link-cadastro {
-    font-size: 12px;
-    margin-bottom: 20px !important;
+    font-size: 15px;
+    margin-bottom: 28px !important;
 }
 
 .link-cadastro a {
@@ -141,13 +135,14 @@ body {
 
 .btn-acessar {
     width: 100%;
-    padding: 9px;
+    padding: 15px;
     background: #2563eb;
     border: 1px solid #2563eb;
-    border-radius: 5px;
+    border-radius: 6px;
     color: #fff;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 600;
+    transition: 0.2s;
 }
 
 .btn-acessar:hover {
@@ -155,7 +150,7 @@ body {
     color: #fff;
 }
 
-/* Celulares */
+/* Adaptação para telas menores */
 @media (max-width: 768px) {
     .login-container {
         flex-direction: column;
@@ -167,25 +162,25 @@ body {
     }
 
     .side-banner {
-        padding: 25px 20px;
-        gap: 18px;
+        padding: 30px 25px;
+        gap: 22px;
     }
 
     .side-banner h1 {
-        font-size: 22px;
+        font-size: 28px;
     }
 
     .side-banner h2 {
         width: 100%;
-        font-size: 18px;
+        font-size: 23px;
     }
 
     .side-banner p {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .login-form {
-        padding: 25px 20px;
+        padding: 35px 25px;
     }
 
     .formulario {
@@ -193,6 +188,26 @@ body {
     }
 
     .formulario h2 {
-        font-size: 22px;
+        font-size: 27px;
+    }
+
+    .subtitulo {
+        font-size: 15px;
+    }
+
+    .btn-tipo {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .formulario .form-control,
+    .formulario .form-control-lg {
+        min-height: 46px;
+        font-size: 15px;
+    }
+
+    .btn-acessar {
+        padding: 13px;
+        font-size: 16px;
     }
 }
