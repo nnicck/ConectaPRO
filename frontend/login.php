@@ -99,29 +99,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar | ConectaPRO</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
+    <?php include_once "includes/metalinks.php" ?>
     <link rel="stylesheet" href="./css/login.css">
 </head>
-
 <body>
-
 <?php include './partials/topbar.php' ?>
-
 <main class="login-container">
 
     <!-- Lado esquerdo -->
     <section class="side-banner">
         <div>
             <h1 class="text-center mb-4">ConectaPRO</h1>
-
-            <h2>
-                Conectando clientes aos melhores profissionais autônomos.
-            </h2>
-
+            <h2>Conectando clientes aos melhores profissionais autônomos.</h2>
             <p class="mt-4">
                 Encontre eletricistas, diaristas, pedreiros,
                 encanadores e muitos outros profissionais verificados

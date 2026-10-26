@@ -1,6 +1,5 @@
 <section class="como-funciona py-5">
     <div class="container">
-
         <!-- Título -->
         <div class="text-center mb-5">
             <p class="text-primary text-uppercase mb-2">
