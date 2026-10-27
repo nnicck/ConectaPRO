@@ -29,6 +29,7 @@ $servicos = $dados['dados'];
 
     <!-- CSS do projeto -->
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/topBar.css">
 </head>
 
 <body>

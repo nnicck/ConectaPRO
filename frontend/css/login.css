@@ -1,131 +1,98 @@
 
-* {
-    box-sizing: border-box;
+/* Layout geral */
+.login-layout {
+    width: 100%;
+    height: 83vh;
+    background-color: #f7f9fc;
 }
 
-.login-container {
-    display: flex;
-    min-height: calc(100vh - 80px);
-}
-
+/* Banner esquerdo */
 .side-banner {
-    width: 50%;
-    padding: 50px;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 25px;
+    width: 42.5%;
+    flex-shrink: 0;
+    padding: 80px 20px 30px;
+    background-color: #10182b;
+    color: #f7f9fc;
+}
+
+.side-banner h1,
+.side-banner h2,
+.side-banner p {
+    color: #f7f9fc;
 }
 
 .side-banner h1 {
-    font-size: 34px;
-    font-weight: 700;
-    margin-bottom: 28px;
+    font-size: inherit;
 }
 
 .side-banner h2 {
-    width: 95%;
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 1.4;
+    max-width: 480px;
 }
 
 .side-banner p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 8px;
+    max-width: 500px;
 }
 
-.login-form {
-    width: 50%;
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f8fafc;
-}
-
-.formulario {
-    width: 100%;
-    max-width: 470px;
-}
-
-.formulario h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 12px;
-}
-
-.formulario .text-center {
-    margin-bottom: 35px !important;
-}
-
-.subtitulo {
-    color: #64748b;
-    font-size: 17px;
+.banner-beneficios p {
     margin-bottom: 0;
 }
 
+/* Área direita */
+.login-conteudo {
+    flex: 1;
+    min-width: 0;
+    padding: 0 30px;
+    background-color: #f7f9fc;
+}
+
+/* Formulário */
+.formulario {
+    width: 100%;
+    max-width: 595px;
+    margin-top: 80px;
+}
+
+/* Título do formulário */
+.login-titulo {
+    margin-bottom: 38px;
+}
+
+/* Botões Cliente e Profissional */
 .tipo-usuario {
     display: flex;
-    gap: 16px;
-    margin-bottom: 28px !important;
+    justify-content: space-between;
+    gap: 30px;
 }
 
 .btn-tipo {
-    width: 50%;
-    padding: 15px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    background: #fff;
-    color: #334155;
-    font-size: 17px;
-    transition: 0.2s;
-}
-
-.btn-tipo:hover {
-    border-color: #2563eb;
-    color: #2563eb;
+    flex: 1;
+    min-width: 0;
+    padding: 16px 10px;
+    border: 1px solid #2864ed;
+    border-radius: 7px;
+    background-color: #2864ed;
+    color: white;
 }
 
 .btn-tipo.selecionado {
-    background: #2563eb;
-    border-color: #2563eb;
-    color: #fff;
+    background-color: #2864ed;
+    color: white;
 }
 
-.formulario .form-label {
-    font-size: 16px;
-    margin-bottom: 7px;
-}
-
-.formulario .mb-4 {
-    margin-bottom: 22px !important;
-}
-
-.formulario .form-control,
-.formulario .form-control-lg {
-    min-height: 50px;
-    padding: 12px 14px;
-    border-radius: 6px;
-    font-size: 16px;
+/* Campos */
+.formulario .form-control {
     border-color: #cbd5e1;
+    box-shadow: none;
 }
 
 .formulario .form-control:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    border-color: #9db7f5;
+    box-shadow: none;
 }
 
-.link-cadastro {
-    font-size: 15px;
-    margin-bottom: 28px !important;
-}
-
+/* Link de cadastro */
 .link-cadastro a {
-    color: #2563eb;
+    color: #2864ed;
     text-decoration: none;
 }
 
@@ -133,81 +100,79 @@
     text-decoration: underline;
 }
 
+/* Botão acessar */
 .btn-acessar {
     width: 100%;
-    padding: 15px;
-    background: #2563eb;
-    border: 1px solid #2563eb;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 600;
-    transition: 0.2s;
+    margin-top: 35px;
+    padding: 16px;
+    border: none;
+    border-radius: 7px;
+    background-color: #2864ed;
+    color: white;
 }
 
 .btn-acessar:hover {
-    background: #1d4ed8;
-    color: #fff;
+    background-color: #2055d4;
 }
 
-/* Adaptação para telas menores */
-@media (max-width: 768px) {
-    .login-container {
-        flex-direction: column;
-    }
+.tipo-usuario {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
 
-    .side-banner,
-    .login-form {
-        width: 100%;
-    }
+.btn-tipo {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 10px;
 
-    .side-banner {
-        padding: 30px 25px;
-        gap: 22px;
-    }
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
 
-    .side-banner h1 {
-        font-size: 28px;
-    }
+    background-color: #ffffff;
+    color: #10182b;
 
-    .side-banner h2 {
-        width: 100%;
-        font-size: 23px;
-    }
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
 
-    .side-banner p {
-        font-size: 14px;
-    }
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
 
-    .login-form {
-        padding: 35px 25px;
-    }
+/* Efeito ao passar o mouse */
+.btn-tipo:hover {
+    border-color: #2864ed;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(40, 100, 237, 0.12);
+}
 
-    .formulario {
-        max-width: 100%;
-    }
+/* Botão selecionado */
+.btn-tipo.selecionado {
+    background-color: #2864ed;
+    border-color: #2864ed;
+    color: #ffffff;
 
-    .formulario h2 {
-        font-size: 27px;
-    }
+    box-shadow: 0 4px 12px rgba(40, 100, 237, 0.22);
+}
 
-    .subtitulo {
-        font-size: 15px;
-    }
+/* Hover do botão selecionado */
+.btn-tipo.selecionado:hover {
+    background-color: #2055d4;
+    border-color: #2055d4;
+}
 
-    .btn-tipo {
-        padding: 12px;
-        font-size: 15px;
-    }
+/* Feedback ao clicar */
+.btn-tipo:active {
+    transform: scale(0.97);
+}
 
-    .formulario .form-control,
-    .formulario .form-control-lg {
-        min-height: 46px;
-        font-size: 15px;
-    }
-
-    .btn-acessar {
-        padding: 13px;
-        font-size: 16px;
-    }
+/* Foco para navegação pelo teclado */
+.btn-tipo:focus-visible {
+    outline: 2px solid #2864ed;
+    outline-offset: 3px;
 }

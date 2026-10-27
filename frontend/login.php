@@ -105,17 +105,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     >
 
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/topBar.css">
 </head>
 
 <body>
 
 <?php include './partials/topbar.php' ?>
+<main class="d-flex  login-layout">
 
-<main class="login-container">
+    <!-- Lado esquerdo: banner -->
+    <section class="side-banner d-flex flex-column justify-content-between">
 
-    <!-- Lado esquerdo -->
-    <section class="side-banner">
-        <div>
+        <div class="banner-conteudo">
             <h1 class="text-center mb-4">ConectaPRO</h1>
 
             <h2>
@@ -129,18 +130,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </p>
         </div>
 
-        <div>
-            <p>Profissionais verificados.</p>
-            <p>Avaliações e histórico de serviços.</p>
-            <p>Chat e acompanhamento da contratação.</p>
+        <div class="banner-beneficios">
+            <p>✔️ Profissionais verificados.</p>
+            <p>⭐ Avaliações e histórico de serviços.</p>
+            <p>💬 Chat e acompanhamento da contratação.</p>
         </div>
+
     </section>
 
-    <!-- Lado direito -->
-    <section class="login-form">
+    <!-- Lado direito: formulário -->
+    <section class="login-conteudo d-flex justify-content-center">
+
         <form method="POST" action="login.php" class="formulario">
 
-            <div class="text-center mb-5">
+            <div class="text-center login-titulo">
                 <h2>Entrar</h2>
                 <p class="subtitulo">
                     Faça login para acessar sua conta.
@@ -149,6 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <!-- Tipo de usuário -->
             <div class="tipo-usuario mb-4">
+
                 <button
                     type="button"
                     class="btn-tipo"
@@ -166,6 +170,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 >
                     Profissional
                 </button>
+
             </div>
 
             <input
@@ -220,6 +225,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </button>
 
         </form>
+
     </section>
 
 </main>
