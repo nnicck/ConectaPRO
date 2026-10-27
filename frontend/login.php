@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -15,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } elseif ($senha === "") {
         $erro = "Informe sua senha.";
     } else {
-        // Consulta a rota correspondente ao tipo selecionado
         $endpoint = $tipoUsuario === "cliente"
             ? "http://localhost:3001/api/cliente"
             : "http://localhost:3001/api/profissional";
@@ -41,8 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             } else {
                 $usuarios = $resultado["dados"] ?? [];
 
-                // Aceita também uma resposta que seja diretamente uma lista
-                if (!isset($resultado["dados"]) && array_is_list($resultado)) {
+                if (
+                    !isset($resultado["dados"]) &&
+                    array_is_list($resultado)
+                ) {
                     $usuarios = $resultado;
                 }
 
@@ -78,12 +80,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         "tipo" => $tipoUsuario
                     ];
 
-                    if ($tipoUsuario === "cliente") {
-                        header("Location: inicioCliente.php");
-                    } else {
-                        header("Location: inicioProfissional.php");
-                    }
+                    $destino = $tipoUsuario === "cliente"
+                        ? "inicioCliente.php"
+                        : "inicioProfissional.php";
 
+                    header("Location: " . $destino);
                     exit;
                 }
             }
@@ -99,15 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar | ConectaPRO</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <?php include_once "includes/metalinks.php"; ?>
 
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/topBar.css">
 </head>
-
 <body>
 
 <?php include './partials/topbar.php' ?>
@@ -120,12 +117,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <h1 class="text-center mb-4">ConectaPRO</h1>
 
             <h2>
-                Conectando clientes aos melhores profissionais autônomos.
+                Conectando clientes aos melhores
+                profissionais autônomos.
             </h2>
 
-            <p class="mt-4">
+            <p>
                 Encontre eletricistas, diaristas, pedreiros,
-                encanadores e muitos outros profissionais verificados
+                encanadores e muitos outros profissionais
                 em um único lugar.
             </p>
         </div>
@@ -177,12 +175,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 type="hidden"
                 name="tipoUsuario"
                 id="tipoUsuario"
-                value="<?= htmlspecialchars($_POST["tipoUsuario"] ?? "", ENT_QUOTES, "UTF-8") ?>"
+                value="<?= htmlspecialchars($tipoUsuario ?? "", ENT_QUOTES, "UTF-8") ?>"
             >
 
-            <div class="mb-4">
-                <label for="email" class="form-label">E-mail</label>
+            <div class="user-type d-flex gap-3 mb-4">
+                <button
+                    type="button"
+                    class="btn btn-tipo flex-fill"
+                    data-tipo="cliente"
+                    aria-pressed="<?= ($tipoUsuario ?? "") === "cliente" ? "true" : "false" ?>"
+                >
+                    Cliente
+                </button>
 
+                <button
+                    type="button"
+                    class="btn btn-tipo flex-fill"
+                    data-tipo="profissional"
+                    aria-pressed="<?= ($tipoUsuario ?? "") === "profissional" ? "true" : "false" ?>"
+                >
+                    Profissional
+                </button>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
                 <input
                     type="email"
                     name="email"
@@ -190,14 +207,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     class="form-control form-control-lg"
                     placeholder="Digite seu e-mail"
                     autocomplete="email"
-                    value="<?= htmlspecialchars($_POST["email"] ?? "", ENT_QUOTES, "UTF-8") ?>"
+                    value="<?= htmlspecialchars($email ?? "", ENT_QUOTES, "UTF-8") ?>"
                     required
                 >
             </div>
 
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
-
                 <input
                     type="password"
                     name="senha"
@@ -209,21 +225,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 >
             </div>
 
-            <p class="link-cadastro mb-4">
+            <p class="mb-4">
                 Ainda não tem uma conta?
-                <a href="cadastro.php">Cadastre-se</a>
+                <a href="cadastroCliente.php">Cadastre-se</a>
             </p>
 
             <?php if ($erro !== ""): ?>
-                <div class="alert alert-danger" role="alert">
+                <p class="text-danger" role="alert">
                     <?= htmlspecialchars($erro, ENT_QUOTES, "UTF-8") ?>
-                </div>
+                </p>
             <?php endif; ?>
 
-            <button type="submit" class="btn-acessar">
+            <button
+                type="submit"
+                id="btnAcessar"
+                class="btn btn-acessar w-100 py-3"
+            >
                 Acessar
             </button>
-
         </form>
 
     </section>
@@ -233,10 +252,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <script>
     const botoesTipo = document.querySelectorAll(".btn-tipo");
     const campoTipo = document.getElementById("tipoUsuario");
+    const formLogin = document.getElementById("formLogin");
 
     function atualizarTipoSelecionado() {
         botoesTipo.forEach((botao) => {
-            const selecionado = botao.dataset.tipo === campoTipo.value;
+            const selecionado =
+                botao.dataset.tipo === campoTipo.value;
 
             botao.classList.toggle("selecionado", selecionado);
             botao.setAttribute(
@@ -253,10 +274,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         });
     });
 
+    formLogin.addEventListener("submit", (event) => {
+        if (!campoTipo.value) {
+            event.preventDefault();
+            alert("Selecione Cliente ou Profissional.");
+        }
+    });
+
     atualizarTipoSelecionado();
 </script>
 
-<?php include './partials/bottom.php' ?>
+<?php include "./partials/bottom.php"; ?>
 
 </body>
 </html>

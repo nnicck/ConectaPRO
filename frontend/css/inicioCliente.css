@@ -1,0 +1,107 @@
+.inicio-cliente {
+    color: #0F172A;
+    background-color: #F8FAFC;
+    min-height: 80vh;
+}
+
+.perfil-cliente,
+.atividade-cliente,
+.servicos-cliente {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.foto-perfil {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.dados-cliente h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.dados-cliente p {
+    margin-bottom: 0.5rem;
+    overflow-wrap: anywhere;
+}
+
+.atividade-cliente h2,
+.servicos-cliente h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.estatistica-contratos {
+    flex-wrap: wrap;
+}
+
+.estatistica-contratos h3 {
+    color: #2563EB;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.lista-servicos {
+    align-items: stretch;
+}
+
+.card-servico {
+    width: 250px;
+    min-height: 250px;
+    background-color: #FFFFFF;
+    border-color: #CBD5E1 !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-servico:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgb(15 23 42 / 8%);
+}
+
+.imagem-servico {
+    height: 160px;
+    object-fit: contain;
+    background-color: #FFFFFF;
+}
+
+.detalhes-servico {
+    border-color: #CBD5E1 !important;
+    overflow-wrap: anywhere;
+}
+
+.detalhes-servico h3 {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .perfil-cliente,
+    .atividade-cliente,
+    .servicos-cliente {
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+
+    .perfil-cliente {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+
+    .foto-perfil {
+        width: 140px;
+        height: 140px;
+    }
+
+    .dados-cliente h1 {
+        font-size: 1.6rem;
+    }
+
+    .card-servico {
+        width: 100%;
+    }
+}

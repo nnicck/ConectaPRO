@@ -64,6 +64,7 @@
     gap: 30px;
 }
 
+/* Seleção do tipo de conta */
 .btn-tipo {
     flex: 1;
     min-width: 0;

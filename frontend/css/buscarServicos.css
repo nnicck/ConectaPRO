@@ -1,0 +1,237 @@
+.pagina-busca {
+    color: #0F172A;
+    background-color: #F8FAFC;
+}
+
+.banner-busca {
+    padding: 3rem 1.5rem;
+    background-color: #10182C;
+}
+
+.banner-busca h1 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.campo-busca {
+    min-height: 52px;
+}
+
+.campo-busca .form-control {
+    min-width: 0;
+    padding: 0.8rem 1rem;
+    border: none;
+    font-size: 15px;
+}
+
+.campo-busca .form-control:focus {
+    box-shadow: 0 0 0 3px rgb(37 99 235 / 30%);
+}
+
+.botao-buscar {
+    min-width: 135px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.sugestao {
+    min-width: 140px;
+    padding: 0.4rem 1.25rem;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.conteudo-busca {
+    background-color: #F7F9FC;
+}
+
+.painel-filtros {
+    padding: 1.5rem;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+}
+
+.painel-filtros h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.painel-filtros .form-label {
+    font-weight: 600;
+}
+
+.painel-filtros .form-control,
+.painel-filtros .form-select {
+    min-height: 44px;
+    border-color: #CBD5E1;
+}
+
+.painel-filtros .btn-primary,
+.botao-buscar {
+    background-color: #2563EB;
+    border-color: #2563EB;
+}
+
+.cabecalho-resultados {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.cabecalho-resultados h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.cabecalho-resultados p {
+    margin: 0;
+    color: #64748B;
+}
+
+.lista-profissionais {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card-profissional {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-profissional:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgb(15 23 42 / 7%);
+}
+
+.foto-profissional {
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 12px;
+    background-color: #E2E8F0;
+}
+
+.informacoes-profissional {
+    min-width: 0;
+    flex: 1;
+}
+
+.informacoes-profissional h3 {
+    margin-bottom: 0.35rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.profissao-profissional {
+    margin-bottom: 0.6rem;
+    color: #475569;
+    font-weight: 500;
+}
+
+.local-profissional {
+    margin-bottom: 0.6rem;
+    color: #64748B;
+    overflow-wrap: anywhere;
+}
+
+.preco-profissional {
+    margin-bottom: 0.75rem;
+    color: #2563EB;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.descricao-profissional {
+    color: #475569;
+    overflow-wrap: anywhere;
+}
+
+.informacoes-profissional .btn {
+    margin-top: 0.25rem;
+}
+
+.estado-vazio {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    background-color: #FFFFFF;
+    border: 1px dashed #CBD5E1;
+    border-radius: 14px;
+}
+
+.estado-vazio h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.estado-vazio p {
+    margin-bottom: 0;
+    color: #64748B;
+}
+
+@media (max-width: 767.98px) {
+    .banner-busca {
+        padding: 2rem 1rem;
+    }
+
+    .banner-busca h1 {
+        font-size: 23px;
+    }
+
+    .campo-busca .form-control {
+        width: 100%;
+    }
+
+    .botao-buscar {
+        min-width: 95px;
+    }
+
+    .sugestao {
+        min-width: 0;
+    }
+
+    .cabecalho-resultados {
+        flex-direction: column;
+    }
+
+    .card-profissional {
+        gap: 0.9rem;
+        padding: 1rem;
+    }
+
+    .foto-profissional {
+        width: 95px;
+        height: 95px;
+    }
+
+    .informacoes-profissional h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .card-profissional {
+        flex-direction: column;
+    }
+
+    .foto-profissional {
+        width: 100%;
+        height: 180px;
+    }
+}
