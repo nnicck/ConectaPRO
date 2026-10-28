@@ -103,7 +103,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php include_once "includes/metalinks.php"; ?>
 
     <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/topBar.css">
 </head>
 <body>
 
@@ -177,26 +176,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 id="tipoUsuario"
                 value="<?= htmlspecialchars($tipoUsuario ?? "", ENT_QUOTES, "UTF-8") ?>"
             >
-
-            <div class="user-type d-flex gap-3 mb-4">
-                <button
-                    type="button"
-                    class="btn btn-tipo flex-fill"
-                    data-tipo="cliente"
-                    aria-pressed="<?= ($tipoUsuario ?? "") === "cliente" ? "true" : "false" ?>"
-                >
-                    Cliente
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-tipo flex-fill"
-                    data-tipo="profissional"
-                    aria-pressed="<?= ($tipoUsuario ?? "") === "profissional" ? "true" : "false" ?>"
-                >
-                    Profissional
-                </button>
-            </div>
 
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>

@@ -18,7 +18,6 @@ $servicos = $dados['dados'];
 
     <?php include_once "includes/metalinks.php" ?>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/topBar.css">
 </head>
 <body>
     <?php include './partials/topbar.php'; ?>
