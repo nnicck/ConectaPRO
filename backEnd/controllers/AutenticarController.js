@@ -1,3 +1,7 @@
+// Controller de login: entrar, ver quem está logado, atualizar a sessão e sair.
+
+import { responderErro } from "../utils/responderErro.js";
+
 export function criarAutenticarController({ autenticarService }) {
     async function login(req, res, next) {
         try {
@@ -20,21 +24,20 @@ export function criarAutenticarController({ autenticarService }) {
             });
         } catch (erro) {
             if (erro.message.includes("inválidos")) {
-                return res.status(401).json({
-                    sucesso: false,
-                    erro: erro.message
-                });
+                return res.status(401).json({ sucesso: false, erro: erro.message });
             }
 
-            next(erro);
+            responderErro(erro, res, next);
         }
     }
 
+    // Visitante sem login recebe 200 com dados: null (não é um erro, só não está logado)
     function me(req, res) {
         if (!req.session.usuario) {
-            return res.status(401).json({
-                sucesso: false,
-                autenticado: false
+            return res.status(200).json({
+                sucesso: true,
+                autenticado: false,
+                dados: null
             });
         }
 
@@ -43,6 +46,18 @@ export function criarAutenticarController({ autenticarService }) {
             autenticado: true,
             dados: req.session.usuario
         });
+    }
+
+    // Atualiza nome/foto guardados na sessão depois de editar o perfil
+    function atualizarSessao(req, res) {
+        if (!req.session.usuario) {
+            return res.status(401).json({ sucesso: false, erro: "Faça login para continuar" });
+        }
+
+        const { nome, foto, email } = req.body;
+        req.session.usuario = { ...req.session.usuario, ...(nome && { nome }), ...(email && { email }), foto: foto ?? req.session.usuario.foto };
+
+        res.status(200).json({ sucesso: true, dados: req.session.usuario });
     }
 
     function logout(req, res, next) {
@@ -57,5 +72,5 @@ export function criarAutenticarController({ autenticarService }) {
         });
     }
 
-    return { login, me, logout };
+    return { login, me, atualizarSessao, logout };
 }

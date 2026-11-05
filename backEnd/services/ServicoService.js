@@ -1,17 +1,15 @@
-import Servico from "../models/Servico.js";
+// Regras de negócio dos serviços: validação, detalhes e leitura dos filtros da busca.
 
-export function criarServicoService({ servicoModel }) {
+import Servico from "../models/Servico.js";
+import { lerId, mesclar, semSenha } from "../utils/auxiliares.js";
+
+export function criarServicoService({ servicoModel, profissionalModel, midiaModel }) {
     async function listar() {
         return servicoModel.listarTodos();
     }
 
     async function buscarPorId(idRecebido) {
-        const id = Number(idRecebido);
-
-        if (!Number.isInteger(id) || id <= 0) {
-            throw new Error("ID deve ser um número inteiro positivo");
-        }
-
+        const id = lerId(idRecebido);
         const servico = await servicoModel.buscarPorId(id);
 
         if (!servico) {
@@ -21,64 +19,103 @@ export function criarServicoService({ servicoModel }) {
         return servico;
     }
 
+    // Serviço + profissional (sem senha) + todas as mídias. Usado na página de detalhes.
+    async function buscarDetalhes(idRecebido) {
+        const servico = await buscarPorId(idRecebido);
+        const profissional = await profissionalModel.buscarPorId(servico.id_profissional);
+        const midias = await midiaModel.listarPorServico(servico.id_servico);
+
+        return { ...servico, profissional: semSenha(profissional), midias };
+    }
+
+    // Serviços de um profissional, já com imagem e nota (mesmo formato da busca)
+    async function listarPorProfissional(idRecebido) {
+        return servicoModel.pesquisar({ idProfissional: lerId(idRecebido) });
+    }
+
     async function deletarPorId(idRecebido) {
-        const id = Number(idRecebido);
-
-        if (!Number.isInteger(id) || id <= 0) {
-            throw new Error("ID deve ser um número inteiro positivo");
-        }
-
+        const id = lerId(idRecebido);
         const deletado = await servicoModel.deletarPorId(id);
 
         if (!deletado) {
             throw new Error(`Serviço ${id} não encontrado`);
         }
 
-        // Retorna true pois o serviço foi deletado com sucesso
         return true;
     }
 
     async function criar(dados) {
-        const servico = new Servico({ id_servico: 1, ...dados });
+        const servico = new Servico({ ...dados, id_servico: 1 });
+        const { id_servico, ...campos } = servico;
 
-        return servicoModel.criar({
-            titulo: servico.titulo,
-            categoria: servico.categoria,
-            tipo_servico: servico.tipo_servico,
-            tag: servico.tag,
-            descricao: servico.descricao,
-            tempo_prestacao: servico.tempo_prestacao,
-            preco: servico.preco,
-            id_profissional: servico.id_profissional
-        });
+        return servicoModel.criar(campos);
     }
 
     async function atualizar(idRecebido, dados) {
-        const id = Number(idRecebido);
+        const id = lerId(idRecebido);
+        const existente = await servicoModel.buscarPorId(id);
 
-        if (!Number.isInteger(id) || id <= 0) {
-            throw new Error("ID deve ser um número inteiro positivo");
-        }
-
-        const servicoExistente = await servicoModel.buscarPorId(id);
-
-        if (!servicoExistente) {
+        if (!existente) {
             throw new Error(`Serviço ${id} não encontrado`);
         }
 
-        const servico = new Servico({ id_servico: id, ...dados });
+        const servico = new Servico({ ...mesclar(existente, dados), id_servico: id });
+        const { id_servico, ...campos } = servico;
 
-        return servicoModel.atualizar(id, {
-            titulo: servico.titulo,
-            categoria: servico.categoria,
-            tipo_servico: servico.tipo_servico,
-            tag: servico.tag,
-            descricao: servico.descricao,
-            tempo_prestacao: servico.tempo_prestacao,
-            preco: servico.preco,
-            id_profissional: servico.id_profissional
+        return servicoModel.atualizar(id, campos);
+    }
+
+    // Aceita valor único ou lista (?categoria=A&categoria=B) e devolve sempre uma lista de textos
+    function paraLista(valor) {
+        if (valor === undefined || valor === null || valor === "") {
+            return [];
+        }
+
+        return (Array.isArray(valor) ? valor : [valor])
+            .map(item => String(item).trim())
+            .filter(item => item !== "");
+    }
+
+    // Converte "50-100" em { min: 50, max: 100 } e "100-" em { min: 100, max: null }
+    function lerFaixa(texto) {
+        const partes = texto.split("-");
+
+        if (partes.length !== 2) {
+            throw new TypeError(`Faixa de preço inválida: ${texto}`);
+        }
+
+        const min = Number(partes[0]);
+        const max = partes[1] === "" ? null : Number(partes[1]);
+
+        if (!Number.isFinite(min) || min < 0 || (max !== null && (!Number.isFinite(max) || max < min))) {
+            throw new TypeError(`Faixa de preço inválida: ${texto}`);
+        }
+
+        return { min, max };
+    }
+
+    async function pesquisar(consulta = {}) {
+        const termo = paraLista(consulta.termo)[0] ?? "";
+        const localizacao = paraLista(consulta.localizacao)[0] ?? "";
+
+        if (termo.length > 100 || localizacao.length > 100) {
+            throw new TypeError("Termo e localização devem ter no máximo 100 caracteres");
+        }
+
+        return servicoModel.pesquisar({
+            termo,
+            localizacao,
+            categorias: paraLista(consulta.categoria),
+            faixas: paraLista(consulta.faixa).map(lerFaixa)
         });
     }
 
-    return { listar, buscarPorId, criar, deletarPorId, atualizar };
+    async function listarCategorias() {
+        return servicoModel.listarCategorias();
+    }
+
+    return {
+        listar, buscarPorId, buscarDetalhes, listarPorProfissional,
+        criar, deletarPorId, atualizar, pesquisar, listarCategorias
+    };
 }

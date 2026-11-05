@@ -1,79 +1,58 @@
+// Regras de negócio dos clientes (validação + nunca devolver a senha).
+
 import Cliente from "../models/Cliente.js";
+import { lerId, mesclar, semSenha } from "../utils/auxiliares.js";
 
 export function criarClienteService({ clienteModel }) {
     async function listar() {
-        return clienteModel.listarTodos();
+        const clientes = await clienteModel.listarTodos();
+        return clientes.map(semSenha);
     }
 
     async function buscarPorId(idRecebido) {
-        const id = Number(idRecebido);
-
-        if (!Number.isInteger(id) || id <= 0) {
-            throw new Error("ID deve ser um número inteiro positivo");
-        }
-
+        const id = lerId(idRecebido);
         const cliente = await clienteModel.buscarPorId(id);
 
         if (!cliente) {
             throw new Error(`Cliente ${id} não encontrado`);
         }
 
-        return cliente;
+        return semSenha(cliente);
     }
 
     async function deletarPorId(idRecebido) {
-        const id = Number(idRecebido);
-
-        if (!Number.isInteger(id) || id <= 0) {
-            throw new Error("ID deve ser um número inteiro positivo");
-        }
-
+        const id = lerId(idRecebido);
         const deletado = await clienteModel.deletarPorId(id);
 
         if (!deletado) {
             throw new Error(`Cliente ${id} não encontrado`);
         }
 
-        // Lança true pois, o cliente foi deletado com sucesso
         return true;
     }
 
     async function criar(dados) {
-        const cliente = new Cliente({ id_cliente: 1, ...dados });
+        const cliente = new Cliente({ ...dados, id_cliente: 1 });
+        const { id_cliente, ...campos } = cliente;
 
-        return clienteModel.criar({
-            nome: cliente.nome,
-            email: cliente.email,
-            telefone: cliente.telefone,
-            localizacao: cliente.localizacao,
-            senha: cliente.senha,
-            foto: cliente.foto
-        });
+        return semSenha(await clienteModel.criar(campos));
     }
 
+    // Só os campos enviados são alterados. Senha vazia = mantém a senha atual.
     async function atualizar(idRecebido, dados) {
-        const id = Number(idRecebido);
+        const id = lerId(idRecebido);
+        const existente = await clienteModel.buscarPorId(id);
 
-        if (!Number.isInteger(id) || id <= 0) {
-            throw new Error("ID deve ser um número inteiro positivo");
-        }
-
-        const clienteExistente = await clienteModel.buscarPorId(id);
-
-        if (!clienteExistente) {
+        if (!existente) {
             throw new Error(`Cliente ${id} não encontrado`);
         }
 
-        const cliente = new Cliente({ id_cliente: id, ...dados });
+        if (!dados.senha) delete dados.senha;
 
-        return clienteModel.atualizar(id, {
-            nome: cliente.nome,
-            email: cliente.email,
-            telefone: cliente.telefone,
-            localizacao: cliente.localizacao,
-            senha: cliente.senha,
-            foto: cliente.foto
-        });
+        const cliente = new Cliente({ ...mesclar(existente, dados), id_cliente: id });
+        const { id_cliente, ...campos } = cliente;
+
+        return semSenha(await clienteModel.atualizar(id, campos));
     }
 
     return { listar, buscarPorId, criar, deletarPorId, atualizar };

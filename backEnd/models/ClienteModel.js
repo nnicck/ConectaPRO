@@ -1,4 +1,7 @@
-// pool = conexões do MySQL,
+// =====================================================================
+// ClienteModel — SQL da tabela "clientes"
+// pool = conjunto de conexões com o MySQL (criado em config/database.js)
+// =====================================================================
 export function criarClienteModel({ pool }){
 
     async function listarTodos(){
@@ -67,5 +70,10 @@ export function criarClienteModel({ pool }){
         return { ...cliente, id_cliente: Number(id) };
     }
 
-    return {listarTodos, buscarPorId, criar, deletarPorId, atualizar};
+    async function buscarPorEmail(email) {
+        const [linhas] = await pool.query("SELECT * FROM clientes WHERE email = ?", [email]);
+        return linhas[0] ?? null;
+    }
+
+    return {listarTodos, buscarPorId, criar, deletarPorId, atualizar, buscarPorEmail};
 }

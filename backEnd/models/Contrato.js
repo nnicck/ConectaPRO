@@ -1,27 +1,38 @@
+// Ciclo de vida de um contrato:
+// pendente -> aceito -> em andamento -> concluído
+// pendente -> recusado (profissional)   |   pendente/aceito/em andamento -> cancelado (cliente)
+import { dataValida } from "../utils/auxiliares.js";
+
+export const STATUS_CONTRATO = ["pendente", "aceito", "em andamento", "concluído", "recusado", "cancelado"];
+
 export default class Contrato {
     constructor({ id_contrato, data_contrato, local, observacao, data_conclusao, status, id_cliente, id_profissional, id_servico }) {
+        id_cliente = Number(id_cliente);
+        id_profissional = Number(id_profissional);
+        id_servico = Number(id_servico);
+
         if (!Number.isInteger(id_contrato) || id_contrato <= 0) {
             throw new TypeError("O número deve ser inteiro e positivo");
         }
 
-        if (typeof data_contrato !== "string" || data_contrato.trim() === "") {
-            throw new TypeError("Data do contrato é obrigatória");
+        if (!dataValida(data_contrato)) {
+            throw new TypeError("Data do contrato é obrigatória (formato AAAA-MM-DD)");
         }
 
-        if (local !== null && local !== undefined && (typeof local !== "string" || local.trim() === "")) {
+        if (local && typeof local !== "string") {
             throw new TypeError("Local deve ser um texto válido");
         }
 
-        if (observacao !== null && observacao !== undefined && typeof observacao !== "string") {
+        if (observacao && typeof observacao !== "string") {
             throw new TypeError("Observação deve ser um texto válido");
         }
 
-        if (data_conclusao !== null && data_conclusao !== undefined && (typeof data_conclusao !== "string" || data_conclusao.trim() === "")) {
+        if (data_conclusao && !dataValida(data_conclusao)) {
             throw new TypeError("Data de conclusão deve ser válida");
         }
 
-        if (typeof status !== "string" || status.trim() === "") {
-            throw new TypeError("Status é obrigatório");
+        if (!STATUS_CONTRATO.includes(status)) {
+            throw new TypeError(`Status inválido. Use: ${STATUS_CONTRATO.join(", ")}`);
         }
 
         if (!Number.isInteger(id_cliente) || id_cliente <= 0) {
@@ -38,9 +49,9 @@ export default class Contrato {
 
         this.id_contrato = id_contrato;
         this.data_contrato = data_contrato;
-        this.local = local ?? null;
-        this.observacao = observacao ?? null;
-        this.data_conclusao = data_conclusao ?? null;
+        this.local = local || null;
+        this.observacao = observacao || null;
+        this.data_conclusao = data_conclusao || null;
         this.status = status;
         this.id_cliente = id_cliente;
         this.id_profissional = id_profissional;

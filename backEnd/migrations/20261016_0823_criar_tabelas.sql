@@ -1,4 +1,5 @@
 -- Crie as tabelas na ordem em que aparecem neste arquivo
+-- (ou rode "npm run migrar", que apaga, recria e popula tudo automaticamente)
 
 -- ==========================================
 -- CLIENTES
@@ -25,7 +26,7 @@ CREATE TABLE IF NOT EXISTS profissionais (
     telefone VARCHAR(20) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     foto VARCHAR(300),
-    localizacao VARCHAR(150),
+    localizacao VARCHAR(300),
     profissao VARCHAR(100) NOT NULL,
     visao_geral VARCHAR(700),
     idioma VARCHAR(50),
@@ -71,24 +72,8 @@ CREATE TABLE IF NOT EXISTS midias (
 );
 
 -- ==========================================
--- AVALIAÇÕES
--- ==========================================
-
-CREATE TABLE IF NOT EXISTS avaliacoes (
-    id_avaliacao INT PRIMARY KEY AUTO_INCREMENT,
-    estrelas FLOAT NOT NULL,
-    comentario VARCHAR(2000),
-    data_avaliacao DATE NOT NULL,
-    id_servico INT NOT NULL UNIQUE,
-
-    CONSTRAINT fk_avaliacoes_servicos
-        FOREIGN KEY (id_servico)
-        REFERENCES servicos(id_servico)
-        ON DELETE CASCADE
-);
-
--- ==========================================
 -- CONTRATOS
+-- status: pendente | aceito | em andamento | concluído | recusado | cancelado
 -- ==========================================
 
 CREATE TABLE IF NOT EXISTS contratos (

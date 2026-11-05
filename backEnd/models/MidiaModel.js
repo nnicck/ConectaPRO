@@ -1,4 +1,7 @@
-// pool = conexões do MySQL,
+// =====================================================================
+// MidiaModel — SQL da tabela "midias"
+// pool = conjunto de conexões com o MySQL (criado em config/database.js)
+// =====================================================================
 export function criarMidiaModel({ pool }) {
 
     async function listarTodos() {
@@ -63,5 +66,10 @@ export function criarMidiaModel({ pool }) {
         return { ...midia, id_midia: Number(id) };
     }
 
-    return { listarTodos, buscarPorId, criar, deletarPorId, atualizar };
+    async function listarPorServico(idServico) {
+        const [linhas] = await pool.query("SELECT * FROM midias WHERE id_servico = ? ORDER BY id_midia", [idServico]);
+        return linhas;
+    }
+
+    return { listarTodos, buscarPorId, criar, deletarPorId, atualizar, listarPorServico };
 }

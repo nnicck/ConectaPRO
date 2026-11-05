@@ -1,5 +1,9 @@
+// Classe de validação da mídia (foto de um serviço).
+
 export default class Midia {
     constructor({ id_midia, tipo, midia, id_servico }) {
+        id_servico = Number(id_servico);
+
         if (!Number.isInteger(id_midia) || id_midia <= 0) {
             throw new TypeError("O número deve ser inteiro e positivo");
         }
@@ -18,7 +22,7 @@ export default class Midia {
 
         this.id_midia = id_midia;
         this.tipo = tipo;
-        this.midia = midia;
+        this.midia = midia.trim();
         this.id_servico = id_servico;
     }
 }

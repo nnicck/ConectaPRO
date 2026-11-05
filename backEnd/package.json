@@ -1,14 +1,17 @@
 {
-  "name": "api-produtos",
+  "name": "conectapro-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "migrar": "node scripts/migrar.js",
+    "check": "node scripts/check.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "API do ConectaPRO",
   "private": true,
   "type": "module",
   "dependencies": {

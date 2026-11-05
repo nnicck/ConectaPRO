@@ -1,5 +1,10 @@
+// Classe de validação do serviço: se algum campo estiver errado, lança um erro (vira status 400).
+
 export default class Servico {
     constructor({ id_servico, titulo, categoria, tipo_servico, tag, descricao, tempo_prestacao, preco, id_profissional }) {
+        // ids podem chegar como texto vindo de formulários ("3"), então convertemos
+        id_profissional = Number(id_profissional);
+
         if (!Number.isInteger(id_servico) || id_servico <= 0) {
             throw new TypeError("O número deve ser inteiro e positivo");
         }
@@ -16,7 +21,7 @@ export default class Servico {
             throw new TypeError("Tipo de serviço é obrigatório");
         }
 
-        if (!Number.isFinite(Number(preco)) || Number(preco) < 0) {
+        if (preco === "" || preco === null || !Number.isFinite(Number(preco)) || Number(preco) < 0) {
             throw new TypeError("Preço deve ser um número maior ou igual a zero");
         }
 
@@ -24,25 +29,25 @@ export default class Servico {
             throw new TypeError("ID do profissional deve ser inteiro e positivo");
         }
 
-        if (tag !== null && tag !== undefined && (typeof tag !== "string" || tag.trim() === "")) {
+        if (tag && typeof tag !== "string") {
             throw new TypeError("Tag deve ser um texto válido");
         }
 
-        if (descricao !== null && descricao !== undefined && typeof descricao !== "string") {
+        if (descricao && typeof descricao !== "string") {
             throw new TypeError("Descrição deve ser um texto válido");
         }
 
-        if (tempo_prestacao !== null && tempo_prestacao !== undefined && (typeof tempo_prestacao !== "string" || tempo_prestacao.trim() === "")) {
+        if (tempo_prestacao && typeof tempo_prestacao !== "string") {
             throw new TypeError("Tempo de prestação deve ser um texto válido");
         }
 
         this.id_servico = id_servico;
-        this.titulo = titulo;
-        this.categoria = categoria;
-        this.tipo_servico = tipo_servico;
-        this.tag = tag ?? null;
-        this.descricao = descricao ?? null;
-        this.tempo_prestacao = tempo_prestacao ?? null;
+        this.titulo = titulo.trim();
+        this.categoria = categoria.trim();
+        this.tipo_servico = tipo_servico.trim();
+        this.tag = tag || null;
+        this.descricao = descricao || null;
+        this.tempo_prestacao = tempo_prestacao || null;
         this.preco = Number(preco);
         this.id_profissional = id_profissional;
     }

@@ -1,3 +1,5 @@
+// Lê o arquivo .env e confere se as variáveis obrigatórias foram preenchidas.
+
 const nomeObrigatorios = ["PORT", "DB_HOST", "DB_PORT", "DB_USER", "DB_NAME"];
 //DB_PASS ficará de fora, pois como usamos o XAMPP ou mysql sem configuração de segurança, a senha é ("") vazia
 

@@ -1,0 +1,354 @@
+/* ===== Cores do layout ConectaPRO ===== */
+:root {
+  --cp-marinho: #0F172A;      /* sidebar, rodapé, botões escuros */
+  --cp-azul: #2563EB;         /* botões principais e item ativo */
+  --cp-azul-escuro: #1D4ED8;
+  --cp-azul-claro: #E8F0FE;
+  --cp-fundo: #F8FAFC;        /* fundo das páginas */
+  --cp-borda: #CBD5E1;        /* bordas de campos */
+  --cp-borda-card: #E2E8F0;   /* bordas de cards (mais suave) */
+  --cp-sombra: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.05);
+  --cp-verde: #10B981;        /* etapas concluídas */
+  --cp-texto-suave: #64748B;
+
+  /* faz o Bootstrap usar o mesmo azul em btn-primary, links etc. */
+  --bs-primary: #2563EB;
+  --bs-primary-rgb: 37, 99, 235;
+  --bs-link-color: #2563EB;
+  --bs-link-color-rgb: 37, 99, 235;
+  --bs-body-font-family: "Inter Variable", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cp-fundo);
+  color: #0F172A;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .h1, .h2, .h3 {
+  letter-spacing: -0.01em;
+}
+
+/* ===== Botões ===== */
+.btn-primary {
+  --bs-btn-bg: var(--cp-azul);
+  --bs-btn-border-color: var(--cp-azul);
+  --bs-btn-hover-bg: var(--cp-azul-escuro);
+  --bs-btn-hover-border-color: var(--cp-azul-escuro);
+  --bs-btn-active-bg: var(--cp-azul-escuro);
+  --bs-btn-disabled-bg: var(--cp-azul);
+  --bs-btn-disabled-border-color: var(--cp-azul);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--cp-azul);
+  --bs-btn-border-color: var(--cp-azul);
+  --bs-btn-hover-bg: var(--cp-azul);
+  --bs-btn-hover-border-color: var(--cp-azul);
+  --bs-btn-active-bg: var(--cp-azul);
+}
+
+.btn-marinho {
+  background-color: var(--cp-marinho);
+  color: #fff;
+  border: 1px solid var(--cp-marinho);
+}
+
+.btn-marinho:hover,
+.btn-marinho:focus {
+  background-color: #1E293B;
+  color: #fff;
+}
+
+.btn-branco {
+  background-color: #fff;
+  border: 1px solid var(--cp-borda);
+  color: #0F172A;
+}
+
+.btn-branco:hover {
+  background-color: #F1F5F9;
+}
+
+.bg-marinho {
+  background-color: var(--cp-marinho) !important;
+}
+
+.texto-suave {
+  color: var(--cp-texto-suave);
+}
+
+/* ===== Cards ===== */
+.card-cp {
+  background-color: #fff;
+  border: 1px solid var(--cp-borda-card);
+  border-radius: 16px;
+  box-shadow: var(--cp-sombra);
+}
+
+.card-cp-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-cp-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.10);
+}
+
+/* ===== Abas em formato de "pílula" (perfil e solicitações) ===== */
+.aba-pilula {
+  border: 1px solid var(--cp-borda);
+  background-color: #fff;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #334155;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.aba-pilula:hover {
+  border-color: #94A3B8;
+}
+
+.aba-pilula.ativa {
+  background-color: var(--cp-marinho);
+  border-color: var(--cp-marinho);
+  color: #fff;
+}
+
+.aba-pilula .contador {
+  background-color: #F1F5F9;
+  color: #0F172A;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  padding: 1px 8px;
+  margin-left: 6px;
+}
+
+.aba-pilula.ativa .contador {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* ===== Badges de status ===== */
+.badge-status {
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 4px 10px;
+}
+
+/* ===== Tabela do painel (cabeçalho escuro como no layout) ===== */
+.tabela-cp thead th {
+  background-color: var(--cp-marinho);
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 16px;
+  white-space: nowrap;
+}
+
+.tabela-cp td {
+  padding: 14px 16px;
+  vertical-align: middle;
+}
+
+/* ===== Imagens ===== */
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background-color: #E2E8F0;
+}
+
+.selo-verificado {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--cp-azul);
+  color: #fff;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+/* ===== Painel do profissional ===== */
+.sidebar-cp {
+  width: 256px;
+  min-height: 100vh;
+  background-color: var(--cp-marinho);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.sidebar-cp .link-menu {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 12px;
+  font-size: 0.98rem;
+}
+
+.sidebar-cp .link-menu:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-cp .link-menu.ativo {
+  background-color: var(--cp-azul);
+  border-radius: 0 6px 6px 0;
+}
+
+@media (max-width: 991px) {
+  .sidebar-cp {
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    position: static;
+  }
+
+  /* menu vira uma faixa horizontal com rolagem */
+  .sidebar-menu {
+    overflow-x: auto;
+  }
+
+  .sidebar-cp .link-menu {
+    padding: 10px 14px;
+    white-space: nowrap;
+    font-size: 1rem;
+  }
+
+  .sidebar-cp .link-menu.ativo {
+    border-radius: 6px;
+  }
+
+  .sidebar-topo .avatar {
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
+.min-w-0 {
+  min-width: 0;
+}
+
+/* ===== Formulários ===== */
+.form-control,
+.form-select {
+  border-color: var(--cp-borda);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--cp-azul);
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+}
+
+/* ===== Modal simples (sem o JavaScript do Bootstrap) ===== */
+.modal-cp-fundo {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.55);
+  z-index: 1050;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  overflow-y: auto;
+}
+
+.modal-cp {
+  background-color: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 640px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+}
+
+.texto-2-linhas {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+main {
+  min-height: 70vh;
+}
+
+/* ===== Cabeçalho de perfil (profissional, cliente, acompanhamento) ===== */
+.perfil-cabecalho {
+  overflow: hidden;
+}
+
+.perfil-capa {
+  height: 110px;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(96, 165, 250, 0.55), transparent 45%),
+    linear-gradient(120deg, #0F172A 0%, #1E3A8A 60%, #2563EB 100%);
+}
+
+.perfil-corpo {
+  padding: 0 24px 24px;
+}
+
+.perfil-foto {
+  margin-top: -56px;
+  border-radius: 50%;
+  padding: 4px;
+  background-color: #fff;
+  display: inline-block;
+  position: relative;
+}
+
+/* etiqueta pequena com ícone (cidade, membro desde, telefone...) */
+.info-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  color: #475569;
+  background-color: #F1F5F9;
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.info-chip > i {
+  color: var(--cp-azul);
+}
+
+/* número grande dos cartões de resumo */
+.numero-resumo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* título de seção dentro das páginas */
+.titulo-secao {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767px) {
+  .perfil-capa {
+    height: 80px;
+  }
+
+  .perfil-corpo {
+    padding: 0 16px 20px;
+  }
+}
